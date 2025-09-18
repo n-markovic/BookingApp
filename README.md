@@ -1,2 +1,2 @@
-# ChatApp
-Chat aplikacija iz predmeta Odabana poglavlja iz projektovanja poslovnih aplikacija
+# BookingApp
+Booking aplikacija iz predmeta Odabana poglavlja iz projektovanja poslovnih aplikacija
