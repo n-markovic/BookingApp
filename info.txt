@@ -1,0 +1,4 @@
+In this version:
+BookingService and HotelService are separated.
+Yet they do not communicate to each other except when "book" command made.
+3 different processes are needed for this application to run

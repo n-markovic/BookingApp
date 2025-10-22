@@ -1,0 +1,45 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "rs.raf.pds.v5.z2.gRPC";
+
+service BookingService {
+    
+    rpc MakeBooking(BookingRequest) returns (BookingResponse) {}
+    
+    rpc CancelBooking(CancelRequest) returns (CancelResponse) {}
+    
+    rpc GetBookings(UserRequest) returns (stream BookingInfo) {}
+}
+
+message BookingRequest {
+    string user_id = 1;
+    string room_id = 2;
+    string date = 3;
+}
+
+message BookingResponse {
+    bool success = 1;
+    string message = 2;
+}
+
+message CancelRequest {
+    string booking_id = 1;
+}
+
+message CancelResponse {
+    bool success = 1;
+    string message = 2;
+}
+
+message UserRequest {
+    string user_id = 1;
+}
+
+message BookingInfo {
+    string booking_id = 1;
+    string room_id = 2;
+    string date = 3;
+    string status = 4;
+}
+

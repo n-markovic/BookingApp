@@ -1,0 +1,86 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "rs.raf.pds.v5.z2.gRPC";
+
+service BookingService {
+    rpc MakeBooking(BookingRequest) returns (BookingResponse) {}
+    rpc CancelBooking(CancelRequest) returns (CancelResponse) {}
+    rpc GetBookings(UserRequest) returns (stream BookingInfo) {}
+}
+
+service HotelService {
+    rpc AskHotels(AskRequest) returns (AskResponse) {}
+    rpc GetHotel(HotelIdRequest) returns (HotelResponse) {}
+}
+
+message BookingRequest {
+    string user_id = 1;
+    string hotel_id = 2;          // renamed from room_id
+    string start_date = 3;        // yyyy-MM-dd (was 'date')
+    int32 duration_days = 4;      // >=1
+}
+
+message BookingResponse {
+    bool success = 1;
+    string message = 2;
+}
+
+message CancelRequest {
+    string booking_id = 1;
+    string user_id = 2; // user requesting cancellation (authorization)
+}
+
+message CancelResponse {
+    bool success = 1;
+    string message = 2;
+}
+
+message UserRequest {
+    string user_id = 1;
+}
+
+message BookingInfo {
+    string booking_id = 1;
+    string hotel_id = 2;          // renamed from room_id
+    string start_date = 3;        // yyyy-MM-dd
+    int32 duration_days = 4;      // number of days
+    string end_date = 5;          // derived inclusive-exclusive end (start + duration) for client clarity
+    string status = 6;            // ACTIVE / CANCELED
+}
+
+// ---- Hotel querying (Phase 1) ----
+message OccupancyPeriod {          // Active booking span for a hotel
+    string start_date = 1;         // inclusive
+    string end_date = 2;           // exclusive (first free day)
+}
+
+message Hotel {
+    string id = 1;
+    string name = 2;
+    int32 stars = 3;               // 3..5
+    int32 distance_m = 4;          // distance from city center in meters
+    string city = 5;
+    bool available = 6;
+    repeated OccupancyPeriod occupied = 7; // currently ACTIVE booking periods
+}
+
+message AskRequest {
+    string city = 1;        // leave empty for default city
+    int32 max_distance_m = 2;
+    int32 min_stars = 3;    // minimum stars (3..5)
+}
+
+message AskResponse {
+    repeated Hotel hotels = 1;
+}
+
+message HotelIdRequest {
+    string id_or_name = 1; // Accept either canonical id or name
+}
+
+message HotelResponse {
+    bool found = 1;
+    Hotel hotel = 2; // present if found=true
+}
+
