@@ -6,29 +6,23 @@ import java.util.Objects;
 public class BookingRecord {
     private final String bookingId;
     private final String userId;
-    private final String hotelId;        // renamed from roomId
-    private final String startDate;      // yyyy-MM-dd
-    private final int durationDays;      // >=1
-    private final String endDate;        // computed exclusive end date (start + duration)
-    private volatile String status;      // ACTIVE or CANCELED
+    private final String roomId;
+    private final String date; // yyyy-MM-dd
+    private volatile String status; // ACTIVE or CANCELED
     private final Instant createdAt = Instant.now();
 
-    public BookingRecord(String bookingId, String userId, String hotelId, String startDate, int durationDays, String status, String endDate) {
+    public BookingRecord(String bookingId, String userId, String roomId, String date, String status) {
         this.bookingId = bookingId;
         this.userId = userId;
-        this.hotelId = hotelId;
-        this.startDate = startDate;
-        this.durationDays = durationDays;
+        this.roomId = roomId;
+        this.date = date;
         this.status = status;
-        this.endDate = endDate;
     }
 
     public String getBookingId() { return bookingId; }
     public String getUserId() { return userId; }
-    public String getHotelId() { return hotelId; }
-    public String getStartDate() { return startDate; }
-    public int getDurationDays() { return durationDays; }
-    public String getEndDate() { return endDate; }
+    public String getRoomId() { return roomId; }
+    public String getDate() { return date; }
     public String getStatus() { return status; }
     public Instant getCreatedAt() { return createdAt; }
 

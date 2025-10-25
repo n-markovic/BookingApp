@@ -261,6 +261,39 @@ private static final long serialVersionUID = 0L;
     return occupied_.get(index);
   }
 
+  public static final int LAST_PRICE_FIELD_NUMBER = 8;
+  private double lastPrice_ = 0D;
+  /**
+   * <code>double last_price = 8;</code>
+   * @return The lastPrice.
+   */
+  @java.lang.Override
+  public double getLastPrice() {
+    return lastPrice_;
+  }
+
+  public static final int MIN_PRICE_FIELD_NUMBER = 9;
+  private double minPrice_ = 0D;
+  /**
+   * <code>double min_price = 9;</code>
+   * @return The minPrice.
+   */
+  @java.lang.Override
+  public double getMinPrice() {
+    return minPrice_;
+  }
+
+  public static final int MAX_PRICE_FIELD_NUMBER = 10;
+  private double maxPrice_ = 0D;
+  /**
+   * <code>double max_price = 10;</code>
+   * @return The maxPrice.
+   */
+  @java.lang.Override
+  public double getMaxPrice() {
+    return maxPrice_;
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -296,6 +329,15 @@ private static final long serialVersionUID = 0L;
     for (int i = 0; i < occupied_.size(); i++) {
       output.writeMessage(7, occupied_.get(i));
     }
+    if (java.lang.Double.doubleToRawLongBits(lastPrice_) != 0) {
+      output.writeDouble(8, lastPrice_);
+    }
+    if (java.lang.Double.doubleToRawLongBits(minPrice_) != 0) {
+      output.writeDouble(9, minPrice_);
+    }
+    if (java.lang.Double.doubleToRawLongBits(maxPrice_) != 0) {
+      output.writeDouble(10, maxPrice_);
+    }
     getUnknownFields().writeTo(output);
   }
 
@@ -330,6 +372,18 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(7, occupied_.get(i));
     }
+    if (java.lang.Double.doubleToRawLongBits(lastPrice_) != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeDoubleSize(8, lastPrice_);
+    }
+    if (java.lang.Double.doubleToRawLongBits(minPrice_) != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeDoubleSize(9, minPrice_);
+    }
+    if (java.lang.Double.doubleToRawLongBits(maxPrice_) != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeDoubleSize(10, maxPrice_);
+    }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
     return size;
@@ -359,6 +413,15 @@ private static final long serialVersionUID = 0L;
         != other.getAvailable()) return false;
     if (!getOccupiedList()
         .equals(other.getOccupiedList())) return false;
+    if (java.lang.Double.doubleToLongBits(getLastPrice())
+        != java.lang.Double.doubleToLongBits(
+            other.getLastPrice())) return false;
+    if (java.lang.Double.doubleToLongBits(getMinPrice())
+        != java.lang.Double.doubleToLongBits(
+            other.getMinPrice())) return false;
+    if (java.lang.Double.doubleToLongBits(getMaxPrice())
+        != java.lang.Double.doubleToLongBits(
+            other.getMaxPrice())) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -387,6 +450,15 @@ private static final long serialVersionUID = 0L;
       hash = (37 * hash) + OCCUPIED_FIELD_NUMBER;
       hash = (53 * hash) + getOccupiedList().hashCode();
     }
+    hash = (37 * hash) + LAST_PRICE_FIELD_NUMBER;
+    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+        java.lang.Double.doubleToLongBits(getLastPrice()));
+    hash = (37 * hash) + MIN_PRICE_FIELD_NUMBER;
+    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+        java.lang.Double.doubleToLongBits(getMinPrice()));
+    hash = (37 * hash) + MAX_PRICE_FIELD_NUMBER;
+    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+        java.lang.Double.doubleToLongBits(getMaxPrice()));
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -531,6 +603,9 @@ private static final long serialVersionUID = 0L;
         occupiedBuilder_.clear();
       }
       bitField0_ = (bitField0_ & ~0x00000040);
+      lastPrice_ = 0D;
+      minPrice_ = 0D;
+      maxPrice_ = 0D;
       return this;
     }
 
@@ -595,6 +670,15 @@ private static final long serialVersionUID = 0L;
       if (((from_bitField0_ & 0x00000020) != 0)) {
         result.available_ = available_;
       }
+      if (((from_bitField0_ & 0x00000080) != 0)) {
+        result.lastPrice_ = lastPrice_;
+      }
+      if (((from_bitField0_ & 0x00000100) != 0)) {
+        result.minPrice_ = minPrice_;
+      }
+      if (((from_bitField0_ & 0x00000200) != 0)) {
+        result.maxPrice_ = maxPrice_;
+      }
     }
 
     @java.lang.Override
@@ -658,6 +742,15 @@ private static final long serialVersionUID = 0L;
             occupiedBuilder_.addAllMessages(other.occupied_);
           }
         }
+      }
+      if (other.getLastPrice() != 0D) {
+        setLastPrice(other.getLastPrice());
+      }
+      if (other.getMinPrice() != 0D) {
+        setMinPrice(other.getMinPrice());
+      }
+      if (other.getMaxPrice() != 0D) {
+        setMaxPrice(other.getMaxPrice());
       }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
@@ -728,6 +821,21 @@ private static final long serialVersionUID = 0L;
               }
               break;
             } // case 58
+            case 65: {
+              lastPrice_ = input.readDouble();
+              bitField0_ |= 0x00000080;
+              break;
+            } // case 65
+            case 73: {
+              minPrice_ = input.readDouble();
+              bitField0_ |= 0x00000100;
+              break;
+            } // case 73
+            case 81: {
+              maxPrice_ = input.readDouble();
+              bitField0_ |= 0x00000200;
+              break;
+            } // case 81
             default: {
               if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                 done = true; // was an endgroup tag
@@ -1391,6 +1499,102 @@ private static final long serialVersionUID = 0L;
         occupied_ = null;
       }
       return occupiedBuilder_;
+    }
+
+    private double lastPrice_ ;
+    /**
+     * <code>double last_price = 8;</code>
+     * @return The lastPrice.
+     */
+    @java.lang.Override
+    public double getLastPrice() {
+      return lastPrice_;
+    }
+    /**
+     * <code>double last_price = 8;</code>
+     * @param value The lastPrice to set.
+     * @return This builder for chaining.
+     */
+    public Builder setLastPrice(double value) {
+
+      lastPrice_ = value;
+      bitField0_ |= 0x00000080;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>double last_price = 8;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearLastPrice() {
+      bitField0_ = (bitField0_ & ~0x00000080);
+      lastPrice_ = 0D;
+      onChanged();
+      return this;
+    }
+
+    private double minPrice_ ;
+    /**
+     * <code>double min_price = 9;</code>
+     * @return The minPrice.
+     */
+    @java.lang.Override
+    public double getMinPrice() {
+      return minPrice_;
+    }
+    /**
+     * <code>double min_price = 9;</code>
+     * @param value The minPrice to set.
+     * @return This builder for chaining.
+     */
+    public Builder setMinPrice(double value) {
+
+      minPrice_ = value;
+      bitField0_ |= 0x00000100;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>double min_price = 9;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearMinPrice() {
+      bitField0_ = (bitField0_ & ~0x00000100);
+      minPrice_ = 0D;
+      onChanged();
+      return this;
+    }
+
+    private double maxPrice_ ;
+    /**
+     * <code>double max_price = 10;</code>
+     * @return The maxPrice.
+     */
+    @java.lang.Override
+    public double getMaxPrice() {
+      return maxPrice_;
+    }
+    /**
+     * <code>double max_price = 10;</code>
+     * @param value The maxPrice to set.
+     * @return This builder for chaining.
+     */
+    public Builder setMaxPrice(double value) {
+
+      maxPrice_ = value;
+      bitField0_ |= 0x00000200;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>double max_price = 10;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearMaxPrice() {
+      bitField0_ = (bitField0_ & ~0x00000200);
+      maxPrice_ = 0D;
+      onChanged();
+      return this;
     }
     @java.lang.Override
     public final Builder setUnknownFields(

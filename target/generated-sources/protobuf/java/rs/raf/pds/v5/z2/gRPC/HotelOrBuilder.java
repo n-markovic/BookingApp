@@ -112,4 +112,22 @@ public interface HotelOrBuilder extends
    */
   rs.raf.pds.v5.z2.gRPC.OccupancyPeriodOrBuilder getOccupiedOrBuilder(
       int index);
+
+  /**
+   * <code>double last_price = 8;</code>
+   * @return The lastPrice.
+   */
+  double getLastPrice();
+
+  /**
+   * <code>double min_price = 9;</code>
+   * @return The minPrice.
+   */
+  double getMinPrice();
+
+  /**
+   * <code>double max_price = 10;</code>
+   * @return The maxPrice.
+   */
+  double getMaxPrice();
 }

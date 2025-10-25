@@ -77,6 +77,99 @@ public final class HotelServiceGrpc {
     return getGetHotelMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<rs.raf.pds.v5.z2.gRPC.ReserveRequest,
+      rs.raf.pds.v5.z2.gRPC.ReserveResponse> getReserveMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "Reserve",
+      requestType = rs.raf.pds.v5.z2.gRPC.ReserveRequest.class,
+      responseType = rs.raf.pds.v5.z2.gRPC.ReserveResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<rs.raf.pds.v5.z2.gRPC.ReserveRequest,
+      rs.raf.pds.v5.z2.gRPC.ReserveResponse> getReserveMethod() {
+    io.grpc.MethodDescriptor<rs.raf.pds.v5.z2.gRPC.ReserveRequest, rs.raf.pds.v5.z2.gRPC.ReserveResponse> getReserveMethod;
+    if ((getReserveMethod = HotelServiceGrpc.getReserveMethod) == null) {
+      synchronized (HotelServiceGrpc.class) {
+        if ((getReserveMethod = HotelServiceGrpc.getReserveMethod) == null) {
+          HotelServiceGrpc.getReserveMethod = getReserveMethod =
+              io.grpc.MethodDescriptor.<rs.raf.pds.v5.z2.gRPC.ReserveRequest, rs.raf.pds.v5.z2.gRPC.ReserveResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "Reserve"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  rs.raf.pds.v5.z2.gRPC.ReserveRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  rs.raf.pds.v5.z2.gRPC.ReserveResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new HotelServiceMethodDescriptorSupplier("Reserve"))
+              .build();
+        }
+      }
+    }
+    return getReserveMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<rs.raf.pds.v5.z2.gRPC.ReleaseRequest,
+      rs.raf.pds.v5.z2.gRPC.ReleaseResponse> getReleaseMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "Release",
+      requestType = rs.raf.pds.v5.z2.gRPC.ReleaseRequest.class,
+      responseType = rs.raf.pds.v5.z2.gRPC.ReleaseResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<rs.raf.pds.v5.z2.gRPC.ReleaseRequest,
+      rs.raf.pds.v5.z2.gRPC.ReleaseResponse> getReleaseMethod() {
+    io.grpc.MethodDescriptor<rs.raf.pds.v5.z2.gRPC.ReleaseRequest, rs.raf.pds.v5.z2.gRPC.ReleaseResponse> getReleaseMethod;
+    if ((getReleaseMethod = HotelServiceGrpc.getReleaseMethod) == null) {
+      synchronized (HotelServiceGrpc.class) {
+        if ((getReleaseMethod = HotelServiceGrpc.getReleaseMethod) == null) {
+          HotelServiceGrpc.getReleaseMethod = getReleaseMethod =
+              io.grpc.MethodDescriptor.<rs.raf.pds.v5.z2.gRPC.ReleaseRequest, rs.raf.pds.v5.z2.gRPC.ReleaseResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "Release"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  rs.raf.pds.v5.z2.gRPC.ReleaseRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  rs.raf.pds.v5.z2.gRPC.ReleaseResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new HotelServiceMethodDescriptorSupplier("Release"))
+              .build();
+        }
+      }
+    }
+    return getReleaseMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<rs.raf.pds.v5.z2.gRPC.ConfirmPaymentRequest,
+      rs.raf.pds.v5.z2.gRPC.ConfirmPaymentResponse> getConfirmPaymentMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "ConfirmPayment",
+      requestType = rs.raf.pds.v5.z2.gRPC.ConfirmPaymentRequest.class,
+      responseType = rs.raf.pds.v5.z2.gRPC.ConfirmPaymentResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<rs.raf.pds.v5.z2.gRPC.ConfirmPaymentRequest,
+      rs.raf.pds.v5.z2.gRPC.ConfirmPaymentResponse> getConfirmPaymentMethod() {
+    io.grpc.MethodDescriptor<rs.raf.pds.v5.z2.gRPC.ConfirmPaymentRequest, rs.raf.pds.v5.z2.gRPC.ConfirmPaymentResponse> getConfirmPaymentMethod;
+    if ((getConfirmPaymentMethod = HotelServiceGrpc.getConfirmPaymentMethod) == null) {
+      synchronized (HotelServiceGrpc.class) {
+        if ((getConfirmPaymentMethod = HotelServiceGrpc.getConfirmPaymentMethod) == null) {
+          HotelServiceGrpc.getConfirmPaymentMethod = getConfirmPaymentMethod =
+              io.grpc.MethodDescriptor.<rs.raf.pds.v5.z2.gRPC.ConfirmPaymentRequest, rs.raf.pds.v5.z2.gRPC.ConfirmPaymentResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "ConfirmPayment"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  rs.raf.pds.v5.z2.gRPC.ConfirmPaymentRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  rs.raf.pds.v5.z2.gRPC.ConfirmPaymentResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new HotelServiceMethodDescriptorSupplier("ConfirmPayment"))
+              .build();
+        }
+      }
+    }
+    return getConfirmPaymentMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -138,6 +231,36 @@ public final class HotelServiceGrpc {
         io.grpc.stub.StreamObserver<rs.raf.pds.v5.z2.gRPC.HotelResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetHotelMethod(), responseObserver);
     }
+
+    /**
+     * <pre>
+     * Reserve one room capacity for given period
+     * </pre>
+     */
+    default void reserve(rs.raf.pds.v5.z2.gRPC.ReserveRequest request,
+        io.grpc.stub.StreamObserver<rs.raf.pds.v5.z2.gRPC.ReserveResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getReserveMethod(), responseObserver);
+    }
+
+    /**
+     * <pre>
+     * Release previously reserved capacity (on cancel/timeout)
+     * </pre>
+     */
+    default void release(rs.raf.pds.v5.z2.gRPC.ReleaseRequest request,
+        io.grpc.stub.StreamObserver<rs.raf.pds.v5.z2.gRPC.ReleaseResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getReleaseMethod(), responseObserver);
+    }
+
+    /**
+     * <pre>
+     * Confirm payment/stay so capacity is committed
+     * </pre>
+     */
+    default void confirmPayment(rs.raf.pds.v5.z2.gRPC.ConfirmPaymentRequest request,
+        io.grpc.stub.StreamObserver<rs.raf.pds.v5.z2.gRPC.ConfirmPaymentResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getConfirmPaymentMethod(), responseObserver);
+    }
   }
 
   /**
@@ -182,6 +305,39 @@ public final class HotelServiceGrpc {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getGetHotelMethod(), getCallOptions()), request, responseObserver);
     }
+
+    /**
+     * <pre>
+     * Reserve one room capacity for given period
+     * </pre>
+     */
+    public void reserve(rs.raf.pds.v5.z2.gRPC.ReserveRequest request,
+        io.grpc.stub.StreamObserver<rs.raf.pds.v5.z2.gRPC.ReserveResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getReserveMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     * <pre>
+     * Release previously reserved capacity (on cancel/timeout)
+     * </pre>
+     */
+    public void release(rs.raf.pds.v5.z2.gRPC.ReleaseRequest request,
+        io.grpc.stub.StreamObserver<rs.raf.pds.v5.z2.gRPC.ReleaseResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getReleaseMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     * <pre>
+     * Confirm payment/stay so capacity is committed
+     * </pre>
+     */
+    public void confirmPayment(rs.raf.pds.v5.z2.gRPC.ConfirmPaymentRequest request,
+        io.grpc.stub.StreamObserver<rs.raf.pds.v5.z2.gRPC.ConfirmPaymentResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getConfirmPaymentMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -212,6 +368,36 @@ public final class HotelServiceGrpc {
     public rs.raf.pds.v5.z2.gRPC.HotelResponse getHotel(rs.raf.pds.v5.z2.gRPC.HotelIdRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getGetHotelMethod(), getCallOptions(), request);
+    }
+
+    /**
+     * <pre>
+     * Reserve one room capacity for given period
+     * </pre>
+     */
+    public rs.raf.pds.v5.z2.gRPC.ReserveResponse reserve(rs.raf.pds.v5.z2.gRPC.ReserveRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getReserveMethod(), getCallOptions(), request);
+    }
+
+    /**
+     * <pre>
+     * Release previously reserved capacity (on cancel/timeout)
+     * </pre>
+     */
+    public rs.raf.pds.v5.z2.gRPC.ReleaseResponse release(rs.raf.pds.v5.z2.gRPC.ReleaseRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getReleaseMethod(), getCallOptions(), request);
+    }
+
+    /**
+     * <pre>
+     * Confirm payment/stay so capacity is committed
+     * </pre>
+     */
+    public rs.raf.pds.v5.z2.gRPC.ConfirmPaymentResponse confirmPayment(rs.raf.pds.v5.z2.gRPC.ConfirmPaymentRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getConfirmPaymentMethod(), getCallOptions(), request);
     }
   }
 
@@ -246,10 +432,46 @@ public final class HotelServiceGrpc {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getGetHotelMethod(), getCallOptions()), request);
     }
+
+    /**
+     * <pre>
+     * Reserve one room capacity for given period
+     * </pre>
+     */
+    public com.google.common.util.concurrent.ListenableFuture<rs.raf.pds.v5.z2.gRPC.ReserveResponse> reserve(
+        rs.raf.pds.v5.z2.gRPC.ReserveRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getReserveMethod(), getCallOptions()), request);
+    }
+
+    /**
+     * <pre>
+     * Release previously reserved capacity (on cancel/timeout)
+     * </pre>
+     */
+    public com.google.common.util.concurrent.ListenableFuture<rs.raf.pds.v5.z2.gRPC.ReleaseResponse> release(
+        rs.raf.pds.v5.z2.gRPC.ReleaseRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getReleaseMethod(), getCallOptions()), request);
+    }
+
+    /**
+     * <pre>
+     * Confirm payment/stay so capacity is committed
+     * </pre>
+     */
+    public com.google.common.util.concurrent.ListenableFuture<rs.raf.pds.v5.z2.gRPC.ConfirmPaymentResponse> confirmPayment(
+        rs.raf.pds.v5.z2.gRPC.ConfirmPaymentRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getConfirmPaymentMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_ASK_HOTELS = 0;
   private static final int METHODID_GET_HOTEL = 1;
+  private static final int METHODID_RESERVE = 2;
+  private static final int METHODID_RELEASE = 3;
+  private static final int METHODID_CONFIRM_PAYMENT = 4;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -275,6 +497,18 @@ public final class HotelServiceGrpc {
         case METHODID_GET_HOTEL:
           serviceImpl.getHotel((rs.raf.pds.v5.z2.gRPC.HotelIdRequest) request,
               (io.grpc.stub.StreamObserver<rs.raf.pds.v5.z2.gRPC.HotelResponse>) responseObserver);
+          break;
+        case METHODID_RESERVE:
+          serviceImpl.reserve((rs.raf.pds.v5.z2.gRPC.ReserveRequest) request,
+              (io.grpc.stub.StreamObserver<rs.raf.pds.v5.z2.gRPC.ReserveResponse>) responseObserver);
+          break;
+        case METHODID_RELEASE:
+          serviceImpl.release((rs.raf.pds.v5.z2.gRPC.ReleaseRequest) request,
+              (io.grpc.stub.StreamObserver<rs.raf.pds.v5.z2.gRPC.ReleaseResponse>) responseObserver);
+          break;
+        case METHODID_CONFIRM_PAYMENT:
+          serviceImpl.confirmPayment((rs.raf.pds.v5.z2.gRPC.ConfirmPaymentRequest) request,
+              (io.grpc.stub.StreamObserver<rs.raf.pds.v5.z2.gRPC.ConfirmPaymentResponse>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -308,6 +542,27 @@ public final class HotelServiceGrpc {
               rs.raf.pds.v5.z2.gRPC.HotelIdRequest,
               rs.raf.pds.v5.z2.gRPC.HotelResponse>(
                 service, METHODID_GET_HOTEL)))
+        .addMethod(
+          getReserveMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              rs.raf.pds.v5.z2.gRPC.ReserveRequest,
+              rs.raf.pds.v5.z2.gRPC.ReserveResponse>(
+                service, METHODID_RESERVE)))
+        .addMethod(
+          getReleaseMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              rs.raf.pds.v5.z2.gRPC.ReleaseRequest,
+              rs.raf.pds.v5.z2.gRPC.ReleaseResponse>(
+                service, METHODID_RELEASE)))
+        .addMethod(
+          getConfirmPaymentMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              rs.raf.pds.v5.z2.gRPC.ConfirmPaymentRequest,
+              rs.raf.pds.v5.z2.gRPC.ConfirmPaymentResponse>(
+                service, METHODID_CONFIRM_PAYMENT)))
         .build();
   }
 
@@ -358,6 +613,9 @@ public final class HotelServiceGrpc {
               .setSchemaDescriptor(new HotelServiceFileDescriptorSupplier())
               .addMethod(getAskHotelsMethod())
               .addMethod(getGetHotelMethod())
+              .addMethod(getReserveMethod())
+              .addMethod(getReleaseMethod())
+              .addMethod(getConfirmPaymentMethod())
               .build();
         }
       }

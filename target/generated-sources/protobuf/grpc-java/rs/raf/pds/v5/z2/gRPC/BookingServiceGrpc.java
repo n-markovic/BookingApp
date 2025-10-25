@@ -108,6 +108,161 @@ public final class BookingServiceGrpc {
     return getGetBookingsMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<rs.raf.pds.v5.z2.gRPC.PaymentRequest,
+      rs.raf.pds.v5.z2.gRPC.PaymentResponse> getPayMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "Pay",
+      requestType = rs.raf.pds.v5.z2.gRPC.PaymentRequest.class,
+      responseType = rs.raf.pds.v5.z2.gRPC.PaymentResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<rs.raf.pds.v5.z2.gRPC.PaymentRequest,
+      rs.raf.pds.v5.z2.gRPC.PaymentResponse> getPayMethod() {
+    io.grpc.MethodDescriptor<rs.raf.pds.v5.z2.gRPC.PaymentRequest, rs.raf.pds.v5.z2.gRPC.PaymentResponse> getPayMethod;
+    if ((getPayMethod = BookingServiceGrpc.getPayMethod) == null) {
+      synchronized (BookingServiceGrpc.class) {
+        if ((getPayMethod = BookingServiceGrpc.getPayMethod) == null) {
+          BookingServiceGrpc.getPayMethod = getPayMethod =
+              io.grpc.MethodDescriptor.<rs.raf.pds.v5.z2.gRPC.PaymentRequest, rs.raf.pds.v5.z2.gRPC.PaymentResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "Pay"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  rs.raf.pds.v5.z2.gRPC.PaymentRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  rs.raf.pds.v5.z2.gRPC.PaymentResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new BookingServiceMethodDescriptorSupplier("Pay"))
+              .build();
+        }
+      }
+    }
+    return getPayMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<rs.raf.pds.v5.z2.gRPC.DepositRequest,
+      rs.raf.pds.v5.z2.gRPC.DepositResponse> getDepositMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "Deposit",
+      requestType = rs.raf.pds.v5.z2.gRPC.DepositRequest.class,
+      responseType = rs.raf.pds.v5.z2.gRPC.DepositResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<rs.raf.pds.v5.z2.gRPC.DepositRequest,
+      rs.raf.pds.v5.z2.gRPC.DepositResponse> getDepositMethod() {
+    io.grpc.MethodDescriptor<rs.raf.pds.v5.z2.gRPC.DepositRequest, rs.raf.pds.v5.z2.gRPC.DepositResponse> getDepositMethod;
+    if ((getDepositMethod = BookingServiceGrpc.getDepositMethod) == null) {
+      synchronized (BookingServiceGrpc.class) {
+        if ((getDepositMethod = BookingServiceGrpc.getDepositMethod) == null) {
+          BookingServiceGrpc.getDepositMethod = getDepositMethod =
+              io.grpc.MethodDescriptor.<rs.raf.pds.v5.z2.gRPC.DepositRequest, rs.raf.pds.v5.z2.gRPC.DepositResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "Deposit"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  rs.raf.pds.v5.z2.gRPC.DepositRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  rs.raf.pds.v5.z2.gRPC.DepositResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new BookingServiceMethodDescriptorSupplier("Deposit"))
+              .build();
+        }
+      }
+    }
+    return getDepositMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<rs.raf.pds.v5.z2.gRPC.AskRequest,
+      rs.raf.pds.v5.z2.gRPC.AskResponse> getAskHotelsMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "AskHotels",
+      requestType = rs.raf.pds.v5.z2.gRPC.AskRequest.class,
+      responseType = rs.raf.pds.v5.z2.gRPC.AskResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<rs.raf.pds.v5.z2.gRPC.AskRequest,
+      rs.raf.pds.v5.z2.gRPC.AskResponse> getAskHotelsMethod() {
+    io.grpc.MethodDescriptor<rs.raf.pds.v5.z2.gRPC.AskRequest, rs.raf.pds.v5.z2.gRPC.AskResponse> getAskHotelsMethod;
+    if ((getAskHotelsMethod = BookingServiceGrpc.getAskHotelsMethod) == null) {
+      synchronized (BookingServiceGrpc.class) {
+        if ((getAskHotelsMethod = BookingServiceGrpc.getAskHotelsMethod) == null) {
+          BookingServiceGrpc.getAskHotelsMethod = getAskHotelsMethod =
+              io.grpc.MethodDescriptor.<rs.raf.pds.v5.z2.gRPC.AskRequest, rs.raf.pds.v5.z2.gRPC.AskResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "AskHotels"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  rs.raf.pds.v5.z2.gRPC.AskRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  rs.raf.pds.v5.z2.gRPC.AskResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new BookingServiceMethodDescriptorSupplier("AskHotels"))
+              .build();
+        }
+      }
+    }
+    return getAskHotelsMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<rs.raf.pds.v5.z2.gRPC.UserRequest,
+      rs.raf.pds.v5.z2.gRPC.Notification> getSubscribeNotificationsMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "SubscribeNotifications",
+      requestType = rs.raf.pds.v5.z2.gRPC.UserRequest.class,
+      responseType = rs.raf.pds.v5.z2.gRPC.Notification.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
+  public static io.grpc.MethodDescriptor<rs.raf.pds.v5.z2.gRPC.UserRequest,
+      rs.raf.pds.v5.z2.gRPC.Notification> getSubscribeNotificationsMethod() {
+    io.grpc.MethodDescriptor<rs.raf.pds.v5.z2.gRPC.UserRequest, rs.raf.pds.v5.z2.gRPC.Notification> getSubscribeNotificationsMethod;
+    if ((getSubscribeNotificationsMethod = BookingServiceGrpc.getSubscribeNotificationsMethod) == null) {
+      synchronized (BookingServiceGrpc.class) {
+        if ((getSubscribeNotificationsMethod = BookingServiceGrpc.getSubscribeNotificationsMethod) == null) {
+          BookingServiceGrpc.getSubscribeNotificationsMethod = getSubscribeNotificationsMethod =
+              io.grpc.MethodDescriptor.<rs.raf.pds.v5.z2.gRPC.UserRequest, rs.raf.pds.v5.z2.gRPC.Notification>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "SubscribeNotifications"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  rs.raf.pds.v5.z2.gRPC.UserRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  rs.raf.pds.v5.z2.gRPC.Notification.getDefaultInstance()))
+              .setSchemaDescriptor(new BookingServiceMethodDescriptorSupplier("SubscribeNotifications"))
+              .build();
+        }
+      }
+    }
+    return getSubscribeNotificationsMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<rs.raf.pds.v5.z2.gRPC.HotelUpdate,
+      rs.raf.pds.v5.z2.gRPC.BookingResponse> getNotifyHotelUpdateMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "NotifyHotelUpdate",
+      requestType = rs.raf.pds.v5.z2.gRPC.HotelUpdate.class,
+      responseType = rs.raf.pds.v5.z2.gRPC.BookingResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<rs.raf.pds.v5.z2.gRPC.HotelUpdate,
+      rs.raf.pds.v5.z2.gRPC.BookingResponse> getNotifyHotelUpdateMethod() {
+    io.grpc.MethodDescriptor<rs.raf.pds.v5.z2.gRPC.HotelUpdate, rs.raf.pds.v5.z2.gRPC.BookingResponse> getNotifyHotelUpdateMethod;
+    if ((getNotifyHotelUpdateMethod = BookingServiceGrpc.getNotifyHotelUpdateMethod) == null) {
+      synchronized (BookingServiceGrpc.class) {
+        if ((getNotifyHotelUpdateMethod = BookingServiceGrpc.getNotifyHotelUpdateMethod) == null) {
+          BookingServiceGrpc.getNotifyHotelUpdateMethod = getNotifyHotelUpdateMethod =
+              io.grpc.MethodDescriptor.<rs.raf.pds.v5.z2.gRPC.HotelUpdate, rs.raf.pds.v5.z2.gRPC.BookingResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "NotifyHotelUpdate"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  rs.raf.pds.v5.z2.gRPC.HotelUpdate.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  rs.raf.pds.v5.z2.gRPC.BookingResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new BookingServiceMethodDescriptorSupplier("NotifyHotelUpdate"))
+              .build();
+        }
+      }
+    }
+    return getNotifyHotelUpdateMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -176,6 +331,56 @@ public final class BookingServiceGrpc {
         io.grpc.stub.StreamObserver<rs.raf.pds.v5.z2.gRPC.BookingInfo> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetBookingsMethod(), responseObserver);
     }
+
+    /**
+     * <pre>
+     * Client payment to confirm booking before deadline
+     * </pre>
+     */
+    default void pay(rs.raf.pds.v5.z2.gRPC.PaymentRequest request,
+        io.grpc.stub.StreamObserver<rs.raf.pds.v5.z2.gRPC.PaymentResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getPayMethod(), responseObserver);
+    }
+
+    /**
+     * <pre>
+     * Deposit money into user's server-side bank account
+     * </pre>
+     */
+    default void deposit(rs.raf.pds.v5.z2.gRPC.DepositRequest request,
+        io.grpc.stub.StreamObserver<rs.raf.pds.v5.z2.gRPC.DepositResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getDepositMethod(), responseObserver);
+    }
+
+    /**
+     * <pre>
+     * Proxy query: Client asks BookingService, which forwards to HotelService
+     * </pre>
+     */
+    default void askHotels(rs.raf.pds.v5.z2.gRPC.AskRequest request,
+        io.grpc.stub.StreamObserver<rs.raf.pds.v5.z2.gRPC.AskResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getAskHotelsMethod(), responseObserver);
+    }
+
+    /**
+     * <pre>
+     * Server-side notifications: client subscribes and receives pushed notifications
+     * </pre>
+     */
+    default void subscribeNotifications(rs.raf.pds.v5.z2.gRPC.UserRequest request,
+        io.grpc.stub.StreamObserver<rs.raf.pds.v5.z2.gRPC.Notification> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getSubscribeNotificationsMethod(), responseObserver);
+    }
+
+    /**
+     * <pre>
+     * Hotel server notifies BookingServer about hotel updates (price changes)
+     * </pre>
+     */
+    default void notifyHotelUpdate(rs.raf.pds.v5.z2.gRPC.HotelUpdate request,
+        io.grpc.stub.StreamObserver<rs.raf.pds.v5.z2.gRPC.BookingResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getNotifyHotelUpdateMethod(), responseObserver);
+    }
   }
 
   /**
@@ -228,6 +433,61 @@ public final class BookingServiceGrpc {
       io.grpc.stub.ClientCalls.asyncServerStreamingCall(
           getChannel().newCall(getGetBookingsMethod(), getCallOptions()), request, responseObserver);
     }
+
+    /**
+     * <pre>
+     * Client payment to confirm booking before deadline
+     * </pre>
+     */
+    public void pay(rs.raf.pds.v5.z2.gRPC.PaymentRequest request,
+        io.grpc.stub.StreamObserver<rs.raf.pds.v5.z2.gRPC.PaymentResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getPayMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     * <pre>
+     * Deposit money into user's server-side bank account
+     * </pre>
+     */
+    public void deposit(rs.raf.pds.v5.z2.gRPC.DepositRequest request,
+        io.grpc.stub.StreamObserver<rs.raf.pds.v5.z2.gRPC.DepositResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getDepositMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     * <pre>
+     * Proxy query: Client asks BookingService, which forwards to HotelService
+     * </pre>
+     */
+    public void askHotels(rs.raf.pds.v5.z2.gRPC.AskRequest request,
+        io.grpc.stub.StreamObserver<rs.raf.pds.v5.z2.gRPC.AskResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getAskHotelsMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     * <pre>
+     * Server-side notifications: client subscribes and receives pushed notifications
+     * </pre>
+     */
+    public void subscribeNotifications(rs.raf.pds.v5.z2.gRPC.UserRequest request,
+        io.grpc.stub.StreamObserver<rs.raf.pds.v5.z2.gRPC.Notification> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncServerStreamingCall(
+          getChannel().newCall(getSubscribeNotificationsMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     * <pre>
+     * Hotel server notifies BookingServer about hotel updates (price changes)
+     * </pre>
+     */
+    public void notifyHotelUpdate(rs.raf.pds.v5.z2.gRPC.HotelUpdate request,
+        io.grpc.stub.StreamObserver<rs.raf.pds.v5.z2.gRPC.BookingResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getNotifyHotelUpdateMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -267,6 +527,57 @@ public final class BookingServiceGrpc {
       return io.grpc.stub.ClientCalls.blockingServerStreamingCall(
           getChannel(), getGetBookingsMethod(), getCallOptions(), request);
     }
+
+    /**
+     * <pre>
+     * Client payment to confirm booking before deadline
+     * </pre>
+     */
+    public rs.raf.pds.v5.z2.gRPC.PaymentResponse pay(rs.raf.pds.v5.z2.gRPC.PaymentRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getPayMethod(), getCallOptions(), request);
+    }
+
+    /**
+     * <pre>
+     * Deposit money into user's server-side bank account
+     * </pre>
+     */
+    public rs.raf.pds.v5.z2.gRPC.DepositResponse deposit(rs.raf.pds.v5.z2.gRPC.DepositRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getDepositMethod(), getCallOptions(), request);
+    }
+
+    /**
+     * <pre>
+     * Proxy query: Client asks BookingService, which forwards to HotelService
+     * </pre>
+     */
+    public rs.raf.pds.v5.z2.gRPC.AskResponse askHotels(rs.raf.pds.v5.z2.gRPC.AskRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getAskHotelsMethod(), getCallOptions(), request);
+    }
+
+    /**
+     * <pre>
+     * Server-side notifications: client subscribes and receives pushed notifications
+     * </pre>
+     */
+    public java.util.Iterator<rs.raf.pds.v5.z2.gRPC.Notification> subscribeNotifications(
+        rs.raf.pds.v5.z2.gRPC.UserRequest request) {
+      return io.grpc.stub.ClientCalls.blockingServerStreamingCall(
+          getChannel(), getSubscribeNotificationsMethod(), getCallOptions(), request);
+    }
+
+    /**
+     * <pre>
+     * Hotel server notifies BookingServer about hotel updates (price changes)
+     * </pre>
+     */
+    public rs.raf.pds.v5.z2.gRPC.BookingResponse notifyHotelUpdate(rs.raf.pds.v5.z2.gRPC.HotelUpdate request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getNotifyHotelUpdateMethod(), getCallOptions(), request);
+    }
   }
 
   /**
@@ -300,11 +611,60 @@ public final class BookingServiceGrpc {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getCancelBookingMethod(), getCallOptions()), request);
     }
+
+    /**
+     * <pre>
+     * Client payment to confirm booking before deadline
+     * </pre>
+     */
+    public com.google.common.util.concurrent.ListenableFuture<rs.raf.pds.v5.z2.gRPC.PaymentResponse> pay(
+        rs.raf.pds.v5.z2.gRPC.PaymentRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getPayMethod(), getCallOptions()), request);
+    }
+
+    /**
+     * <pre>
+     * Deposit money into user's server-side bank account
+     * </pre>
+     */
+    public com.google.common.util.concurrent.ListenableFuture<rs.raf.pds.v5.z2.gRPC.DepositResponse> deposit(
+        rs.raf.pds.v5.z2.gRPC.DepositRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getDepositMethod(), getCallOptions()), request);
+    }
+
+    /**
+     * <pre>
+     * Proxy query: Client asks BookingService, which forwards to HotelService
+     * </pre>
+     */
+    public com.google.common.util.concurrent.ListenableFuture<rs.raf.pds.v5.z2.gRPC.AskResponse> askHotels(
+        rs.raf.pds.v5.z2.gRPC.AskRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getAskHotelsMethod(), getCallOptions()), request);
+    }
+
+    /**
+     * <pre>
+     * Hotel server notifies BookingServer about hotel updates (price changes)
+     * </pre>
+     */
+    public com.google.common.util.concurrent.ListenableFuture<rs.raf.pds.v5.z2.gRPC.BookingResponse> notifyHotelUpdate(
+        rs.raf.pds.v5.z2.gRPC.HotelUpdate request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getNotifyHotelUpdateMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_MAKE_BOOKING = 0;
   private static final int METHODID_CANCEL_BOOKING = 1;
   private static final int METHODID_GET_BOOKINGS = 2;
+  private static final int METHODID_PAY = 3;
+  private static final int METHODID_DEPOSIT = 4;
+  private static final int METHODID_ASK_HOTELS = 5;
+  private static final int METHODID_SUBSCRIBE_NOTIFICATIONS = 6;
+  private static final int METHODID_NOTIFY_HOTEL_UPDATE = 7;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -334,6 +694,26 @@ public final class BookingServiceGrpc {
         case METHODID_GET_BOOKINGS:
           serviceImpl.getBookings((rs.raf.pds.v5.z2.gRPC.UserRequest) request,
               (io.grpc.stub.StreamObserver<rs.raf.pds.v5.z2.gRPC.BookingInfo>) responseObserver);
+          break;
+        case METHODID_PAY:
+          serviceImpl.pay((rs.raf.pds.v5.z2.gRPC.PaymentRequest) request,
+              (io.grpc.stub.StreamObserver<rs.raf.pds.v5.z2.gRPC.PaymentResponse>) responseObserver);
+          break;
+        case METHODID_DEPOSIT:
+          serviceImpl.deposit((rs.raf.pds.v5.z2.gRPC.DepositRequest) request,
+              (io.grpc.stub.StreamObserver<rs.raf.pds.v5.z2.gRPC.DepositResponse>) responseObserver);
+          break;
+        case METHODID_ASK_HOTELS:
+          serviceImpl.askHotels((rs.raf.pds.v5.z2.gRPC.AskRequest) request,
+              (io.grpc.stub.StreamObserver<rs.raf.pds.v5.z2.gRPC.AskResponse>) responseObserver);
+          break;
+        case METHODID_SUBSCRIBE_NOTIFICATIONS:
+          serviceImpl.subscribeNotifications((rs.raf.pds.v5.z2.gRPC.UserRequest) request,
+              (io.grpc.stub.StreamObserver<rs.raf.pds.v5.z2.gRPC.Notification>) responseObserver);
+          break;
+        case METHODID_NOTIFY_HOTEL_UPDATE:
+          serviceImpl.notifyHotelUpdate((rs.raf.pds.v5.z2.gRPC.HotelUpdate) request,
+              (io.grpc.stub.StreamObserver<rs.raf.pds.v5.z2.gRPC.BookingResponse>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -374,6 +754,41 @@ public final class BookingServiceGrpc {
               rs.raf.pds.v5.z2.gRPC.UserRequest,
               rs.raf.pds.v5.z2.gRPC.BookingInfo>(
                 service, METHODID_GET_BOOKINGS)))
+        .addMethod(
+          getPayMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              rs.raf.pds.v5.z2.gRPC.PaymentRequest,
+              rs.raf.pds.v5.z2.gRPC.PaymentResponse>(
+                service, METHODID_PAY)))
+        .addMethod(
+          getDepositMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              rs.raf.pds.v5.z2.gRPC.DepositRequest,
+              rs.raf.pds.v5.z2.gRPC.DepositResponse>(
+                service, METHODID_DEPOSIT)))
+        .addMethod(
+          getAskHotelsMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              rs.raf.pds.v5.z2.gRPC.AskRequest,
+              rs.raf.pds.v5.z2.gRPC.AskResponse>(
+                service, METHODID_ASK_HOTELS)))
+        .addMethod(
+          getSubscribeNotificationsMethod(),
+          io.grpc.stub.ServerCalls.asyncServerStreamingCall(
+            new MethodHandlers<
+              rs.raf.pds.v5.z2.gRPC.UserRequest,
+              rs.raf.pds.v5.z2.gRPC.Notification>(
+                service, METHODID_SUBSCRIBE_NOTIFICATIONS)))
+        .addMethod(
+          getNotifyHotelUpdateMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              rs.raf.pds.v5.z2.gRPC.HotelUpdate,
+              rs.raf.pds.v5.z2.gRPC.BookingResponse>(
+                service, METHODID_NOTIFY_HOTEL_UPDATE)))
         .build();
   }
 
@@ -425,6 +840,11 @@ public final class BookingServiceGrpc {
               .addMethod(getMakeBookingMethod())
               .addMethod(getCancelBookingMethod())
               .addMethod(getGetBookingsMethod())
+              .addMethod(getPayMethod())
+              .addMethod(getDepositMethod())
+              .addMethod(getAskHotelsMethod())
+              .addMethod(getSubscribeNotificationsMethod())
+              .addMethod(getNotifyHotelUpdateMethod())
               .build();
         }
       }
