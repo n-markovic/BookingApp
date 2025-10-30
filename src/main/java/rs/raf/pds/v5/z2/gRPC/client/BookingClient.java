@@ -9,41 +9,42 @@ import java.util.Scanner;
 
 public class BookingClient implements AutoCloseable {
 
-    private final ManagedChannel channel;
-    private final BookingServiceGrpc.BookingServiceBlockingStub blocking;
+    private final ManagedChannel bookingChannel;
+    private final BookingServiceGrpc.BookingServiceBlockingStub bookingBlocking;
 
-    public BookingClient(String host, int port) {
-        channel = ManagedChannelBuilder.forAddress(host, port)
-                .usePlaintext()
-                .build();
-        blocking = BookingServiceGrpc.newBlockingStub(channel);
+    public BookingClient(String bookingHost, int bookingPort) {
+        bookingChannel = ManagedChannelBuilder.forAddress(bookingHost, bookingPort).usePlaintext().build();
+        bookingBlocking = BookingServiceGrpc.newBlockingStub(bookingChannel);
     }
 
-    public String make(String user, String room, String date) {
-        BookingResponse resp = blocking.makeBooking(BookingRequest.newBuilder()
+    public String make(String user, String hotel, String startDate, int durationDays) {
+    BookingResponse resp = bookingBlocking.makeBooking(BookingRequest.newBuilder()
                 .setUserId(user)
-                .setRoomId(room)
-                .setDate(date)
+                .setHotelId(hotel)
+                .setStartDate(startDate)
+                .setDurationDays(durationDays)
                 .build());
         return resp.getMessage();
     }
 
-    public String cancel(String bookingId) {
-        CancelResponse resp = blocking.cancelBooking(CancelRequest.newBuilder().setBookingId(bookingId).build());
+    public String cancel(String bookingId, String userId) {
+        CancelRequest.Builder b = CancelRequest.newBuilder().setBookingId(bookingId);
+        if (userId != null) b.setUserId(userId);
+    CancelResponse resp = bookingBlocking.cancelBooking(b.build());
         return resp.getMessage();
     }
 
     public void list(String userId) {
-        Iterator<BookingInfo> it = blocking.getBookings(UserRequest.newBuilder().setUserId(userId).build());
+    Iterator<BookingInfo> it = bookingBlocking.getBookings(UserRequest.newBuilder().setUserId(userId).build());
         while (it.hasNext()) {
             BookingInfo b = it.next();
-            System.out.println("- " + b.getBookingId() + " soba=" + b.getRoomId() + " datum=" + b.getDate() + " status=" + b.getStatus());
+            System.out.println("- " + b.getBookingId() + " hotel=" + b.getHotelId() + " start=" + b.getStartDate() + " +" + b.getDurationDays() + "d end=" + b.getEndDate() + " status=" + b.getStatus());
         }
     }
 
     @Override
     public void close() {
-        if (channel != null) channel.shutdown();
+    if (bookingChannel != null) bookingChannel.shutdown();
     }
 
     public static void main(String[] args) {
@@ -51,34 +52,26 @@ public class BookingClient implements AutoCloseable {
         // 1) java -cp ... BookingClient <username>
         // 2) java -cp ... BookingClient <host> <port> <username>
         // 3) java -cp ... BookingClient <host> <username>   (port defaults)
-        String host = "localhost";
-        int port = 8090;
+    String bookingHost = "localhost"; int bookingPort = 8090;
         String sessionUser = null;
 
+    // Arg patterns:
+    // 1) <user>
+    // 2) <bookingHost> <bookingPort> <user>
         if (args.length == 1) {
             sessionUser = args[0];
-        } else if (args.length == 2) {
-            // Could be host + user or user + something else; decide by trying to parse second as int
-            try {
-                port = Integer.parseInt(args[1]);
-                host = args[0];
-            } catch (NumberFormatException e) {
-                host = "localhost"; // keep default host
-                sessionUser = args[0]; // fallback treat first as user, ignore second ambiguous
-            }
-            if (sessionUser == null) sessionUser = args[1];
-        } else if (args.length >= 3) {
-            host = args[0];
-            try { port = Integer.parseInt(args[1]); } catch (NumberFormatException ignored) {}
+        } else if (args.length == 3) {
+            bookingHost = args[0];
+            try { bookingPort = Integer.parseInt(args[1]); } catch (NumberFormatException ignored) {}
             sessionUser = args[2];
         }
 
-        try (BookingClient client = new BookingClient(host, port); Scanner in = new Scanner(System.in)) {
-            System.out.println("BookingClient povezan sa " + host + ":" + port);
+        try (BookingClient client = new BookingClient(bookingHost, bookingPort); Scanner in = new Scanner(System.in)) {
+            System.out.println("BookingClient connected (booking=" + bookingHost + ":" + bookingPort + ")");
             if (sessionUser != null) {
-                System.out.println("Korisnik sesije postavljen na '" + sessionUser + "'. Mozete izostaviti korisnika u komandama 'book' i 'list'.");
+                System.out.println("Session user set to '" + sessionUser + "'. You can omit the user in 'book' and 'list' commands.");
             }
-            System.out.println("Komande: book <Hotel> <datum yyyy-MM-dd> | cancel <IDrezervacije> | list | quit");
+            System.out.println("Commands: book <hotel> <yyyy-MM-dd> <durationDays> | pay <bookingId> | cancel <bookingId> | list | ask <city?> <maxDistanceM> <minStars> | quit");
             while (true) {
                 System.out.print("> ");
                 if (!in.hasNextLine()) break;
@@ -89,35 +82,89 @@ public class BookingClient implements AutoCloseable {
                 try {
                     switch (parts[0]) {
                         case "book":
-                        case "make": { // keep 'make' as alias
+                        case "make": { // alias
                             if (sessionUser != null) {
-                                // Expected: book <room> <date>
-                                if (parts.length < 3) { System.out.println("Upotreba: book <soba> <yyyy-MM-dd>"); break; }
-                                String msg = client.make(sessionUser, parts[1], parts[2]);
+                                // book <hotel> <startDate> <duration>
+                                if (parts.length < 4) { System.out.println("Usage: book <hotel> <yyyy-MM-dd> <durationDays>"); break; }
+                                int dur;
+                                try { dur = Integer.parseInt(parts[3]); } catch (NumberFormatException e) { System.out.println("durationDays must be integer"); break; }
+                                String msg = client.make(sessionUser, parts[1], parts[2], dur);
                                 System.out.println(msg);
                             } else {
-                                if (parts.length < 4) { System.out.println("Upotreba: book <user> <soba> <yyyy-MM-dd>"); break; }
-                                String msg = client.make(parts[1], parts[2], parts[3]);
+                                // book <user> <hotel> <startDate> <duration>
+                                if (parts.length < 5) { System.out.println("Usage: book <user> <hotel> <yyyy-MM-dd> <durationDays>"); break; }
+                                int dur;
+                                try { dur = Integer.parseInt(parts[4]); } catch (NumberFormatException e) { System.out.println("durationDays must be integer"); break; }
+                                String msg = client.make(parts[1], parts[2], parts[3], dur);
                                 System.out.println(msg);
                             }
                             break; }
-                        case "cancel":
-                            if (parts.length < 2) { System.out.println("Upotreba: cancel <bookingId>"); break; }
-                            System.out.println(client.cancel(parts[1]));
-                            break;
+                        case "cancel": {
+                            if (parts.length < 2) { System.out.println("Usage: cancel <bookingId>"); break; }
+                            String user = sessionUser;
+                            if (user == null) {
+                                System.out.println("No session user bound; cancellation requires ownership. Provide username first when starting client.");
+                            }
+                            System.out.println(client.cancel(parts[1], user));
+                            break; }
                         case "list":
                             if (sessionUser != null) {
                                 client.list(sessionUser);
                             } else {
-                                if (parts.length < 2) { System.out.println("Upotreba: list <user>"); break; }
+                                if (parts.length < 2) { System.out.println("Usage: list <user>"); break; }
                                 client.list(parts[1]);
                             }
                             break;
+                        case "pay": {
+                            if (parts.length < 2) { System.out.println("Usage: pay <bookingId>"); break; }
+                            String user = sessionUser;
+                            if (user == null) { System.out.println("Set session user by starting client with username."); break; }
+                            PaymentResponse resp = client.bookingBlocking.pay(PaymentRequest.newBuilder()
+                                    .setBookingId(parts[1])
+                                    .setUserId(user)
+                                    .build());
+                            System.out.println(resp.getMessage());
+                            break; }
+                        case "ask": {
+                            // ask <city?> <maxDistanceM> <minStars>
+                            String city = ""; int maxDist; int minStars; int offset = 1;
+                            if (parts.length == 4) { // city provided
+                                city = parts[1]; offset = 2;
+                            }
+                            if (parts.length - offset < 2) { System.out.println("Usage: ask <city?> <maxDistanceMeters> <minStars>"); break; }
+                            try {
+                                maxDist = Integer.parseInt(parts[offset]);
+                                minStars = Integer.parseInt(parts[offset+1]);
+                            } catch (NumberFormatException nfe) { System.out.println("Numbers expected for distance and stars"); break; }
+                            if (minStars < 3) minStars = 3; if (minStars > 5) minStars = 5;
+                            AskRequest req = AskRequest.newBuilder()
+                                    .setCity(city)
+                                    .setMaxDistanceM(maxDist)
+                                    .setMinStars(minStars)
+                                    .build();
+                            AskResponse resp = client.bookingBlocking.askHotels(req);
+                            if (resp.getHotelsCount() == 0) { System.out.println("No hotels found."); break; }
+                            System.out.println("Hotels:");
+                            for (Hotel h : resp.getHotelsList()) {
+                                System.out.print("- " + h.getName() + " (" + h.getStars() + "*) city=" + h.getCity() + " dist=" + h.getDistanceM() + "m avail=" + h.getAvailable());
+                                System.out.print(" price=" + h.getLastPrice() + " (min=" + h.getMinPrice() + ", max=" + h.getMaxPrice() + ")");
+                                if (h.getOccupiedCount() > 0) {
+                                    System.out.print(" occupied=[");
+                                    for (int i=0;i<h.getOccupiedCount();i++) {
+                                        OccupancyPeriod op = h.getOccupied(i);
+                                        System.out.print(op.getStartDate()+"->"+op.getEndDate());
+                                        if (i < h.getOccupiedCount()-1) System.out.print(", ");
+                                    }
+                                    System.out.print("]");
+                                }
+                                System.out.println();
+                            }
+                            break; }
                         default:
-                            System.out.println("Nepoznata komanda");
+                            System.out.println("Unknown command");
                     }
                 } catch (Exception e) {
-                    System.out.println("Greska: " + e.getMessage());
+                    System.out.println("Error: " + e.getMessage());
                 }
             }
         }

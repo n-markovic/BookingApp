@@ -40,36 +40,14 @@ public class Hotel {
     private double basePrice() {
         double distanceKm = distanceMeters / 1000.0;
         double price = 50 + 20 * (stars - 3) - 5 * distanceKm;
-        // Round to whole number (keep as double)
-        return Math.max(20, (double) Math.round(price));
+        return Math.max(20, Math.round(price * 100.0) / 100.0);
     }
 
     public synchronized void updatePriceOnAvailability(boolean nowAvailable) {
         this.available = nowAvailable;
         // if available turned false (reserved), increase price slightly; if becomes available, decrease slightly
         double factor = nowAvailable ? 0.98 : 1.05;
-        // Apply factor then round to whole number
-        lastPrice = Math.max(15, (double) Math.round(lastPrice * factor));
-        if (lastPrice < minPrice) minPrice = lastPrice;
-        if (lastPrice > maxPrice) maxPrice = lastPrice;
-    }
-
-    /**
-     * Record a reservation or release for pricing purposes without changing global availability flag.
-     */
-    public synchronized void recordReservation(boolean reserved) {
-        double factor = reserved ? 1.05 : 0.98;
-        // Apply factor then round to whole number
-        lastPrice = Math.max(15, (double) Math.round(lastPrice * factor));
-        if (lastPrice < minPrice) minPrice = lastPrice;
-        if (lastPrice > maxPrice) maxPrice = lastPrice;
-    }
-
-    /**
-     * Set exact price (rounded) and update min/max accordingly. Synchronized for thread-safety.
-     */
-    public synchronized void setPrice(double price) {
-        this.lastPrice = Math.max(15, (double) Math.round(price));
+        lastPrice = Math.max(15, Math.round((lastPrice * factor) * 100.0) / 100.0);
         if (lastPrice < minPrice) minPrice = lastPrice;
         if (lastPrice > maxPrice) maxPrice = lastPrice;
     }

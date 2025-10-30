@@ -24,10 +24,4 @@ public interface PaymentResponseOrBuilder extends
    */
   com.google.protobuf.ByteString
       getMessageBytes();
-
-  /**
-   * <code>double balance = 3;</code>
-   * @return The balance.
-   */
-  double getBalance();
 }

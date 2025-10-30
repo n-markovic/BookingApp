@@ -45,16 +45,6 @@ public final class BookingServiceOuterClass {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_PaymentResponse_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_DepositRequest_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_DepositRequest_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_DepositResponse_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_DepositResponse_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_UserRequest_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -84,16 +74,6 @@ public final class BookingServiceOuterClass {
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_AskResponse_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_Notification_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_Notification_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_HotelUpdate_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_HotelUpdate_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
     internal_static_HotelIdRequest_descriptor;
   static final 
@@ -151,59 +131,47 @@ public final class BookingServiceOuterClass {
       "_id\030\001 \001(\t\022\017\n\007user_id\030\002 \001(\t\"2\n\016CancelResp" +
       "onse\022\017\n\007success\030\001 \001(\010\022\017\n\007message\030\002 \001(\t\"5" +
       "\n\016PaymentRequest\022\022\n\nbooking_id\030\001 \001(\t\022\017\n\007" +
-      "user_id\030\002 \001(\t\"D\n\017PaymentResponse\022\017\n\007succ" +
-      "ess\030\001 \001(\010\022\017\n\007message\030\002 \001(\t\022\017\n\007balance\030\003 " +
-      "\001(\001\"1\n\016DepositRequest\022\017\n\007user_id\030\001 \001(\t\022\016" +
-      "\n\006amount\030\002 \001(\001\"D\n\017DepositResponse\022\017\n\007suc" +
-      "cess\030\001 \001(\010\022\017\n\007message\030\002 \001(\t\022\017\n\007balance\030\003" +
-      " \001(\001\"\036\n\013UserRequest\022\017\n\007user_id\030\001 \001(\t\"\200\001\n" +
-      "\013BookingInfo\022\022\n\nbooking_id\030\001 \001(\t\022\020\n\010hote" +
-      "l_id\030\002 \001(\t\022\022\n\nstart_date\030\003 \001(\t\022\025\n\rdurati" +
-      "on_days\030\004 \001(\005\022\020\n\010end_date\030\005 \001(\t\022\016\n\006statu" +
-      "s\030\006 \001(\t\"7\n\017OccupancyPeriod\022\022\n\nstart_date" +
-      "\030\001 \001(\t\022\020\n\010end_date\030\002 \001(\t\"\303\001\n\005Hotel\022\n\n\002id" +
-      "\030\001 \001(\t\022\014\n\004name\030\002 \001(\t\022\r\n\005stars\030\003 \001(\005\022\022\n\nd" +
-      "istance_m\030\004 \001(\005\022\014\n\004city\030\005 \001(\t\022\021\n\tavailab" +
-      "le\030\006 \001(\010\022\"\n\010occupied\030\007 \003(\0132\020.OccupancyPe" +
-      "riod\022\022\n\nlast_price\030\010 \001(\001\022\021\n\tmin_price\030\t " +
-      "\001(\001\022\021\n\tmax_price\030\n \001(\001\"V\n\nAskRequest\022\014\n\004" +
-      "city\030\001 \001(\t\022\026\n\016max_distance_m\030\002 \001(\005\022\021\n\tmi" +
-      "n_stars\030\003 \001(\005\022\017\n\007user_id\030\004 \001(\t\"%\n\013AskRes" +
-      "ponse\022\026\n\006hotels\030\001 \003(\0132\006.Hotel\".\n\014Notific" +
-      "ation\022\014\n\004text\030\001 \001(\t\022\020\n\010hotel_id\030\002 \001(\t\"3\n" +
-      "\013HotelUpdate\022\020\n\010hotel_id\030\001 \001(\t\022\022\n\nlast_p" +
-      "rice\030\002 \001(\001\"$\n\016HotelIdRequest\022\022\n\nid_or_na" +
-      "me\030\001 \001(\t\"5\n\rHotelResponse\022\r\n\005found\030\001 \001(\010" +
-      "\022\025\n\005hotel\030\002 \001(\0132\006.Hotel\"^\n\016ReserveReques" +
-      "t\022\020\n\010hotel_id\030\001 \001(\t\022\022\n\nstart_date\030\002 \001(\t\022" +
-      "\025\n\rduration_days\030\003 \001(\005\022\017\n\007user_id\030\004 \001(\t\"" +
-      "3\n\017ReserveResponse\022\017\n\007success\030\001 \001(\010\022\017\n\007m" +
-      "essage\030\002 \001(\t\"M\n\016ReleaseRequest\022\020\n\010hotel_" +
-      "id\030\001 \001(\t\022\022\n\nstart_date\030\002 \001(\t\022\025\n\rduration" +
-      "_days\030\003 \001(\005\"3\n\017ReleaseResponse\022\017\n\007succes" +
-      "s\030\001 \001(\010\022\017\n\007message\030\002 \001(\t\"M\n\025ConfirmPayme" +
-      "ntRequest\022\020\n\010hotel_id\030\001 \001(\t\022\022\n\nbooking_i" +
-      "d\030\002 \001(\t\022\016\n\006amount\030\003 \001(\001\":\n\026ConfirmPaymen" +
-      "tResponse\022\017\n\007success\030\001 \001(\010\022\017\n\007message\030\002 " +
-      "\001(\t2\237\003\n\016BookingService\0222\n\013MakeBooking\022\017." +
-      "BookingRequest\032\020.BookingResponse\"\000\0222\n\rCa" +
-      "ncelBooking\022\016.CancelRequest\032\017.CancelResp" +
-      "onse\"\000\022-\n\013GetBookings\022\014.UserRequest\032\014.Bo" +
-      "okingInfo\"\0000\001\022*\n\003Pay\022\017.PaymentRequest\032\020." +
-      "PaymentResponse\"\000\022.\n\007Deposit\022\017.DepositRe" +
-      "quest\032\020.DepositResponse\"\000\022(\n\tAskHotels\022\013" +
-      ".AskRequest\032\014.AskResponse\"\000\0229\n\026Subscribe" +
-      "Notifications\022\014.UserRequest\032\r.Notificati" +
-      "on\"\0000\001\0225\n\021NotifyHotelUpdate\022\014.HotelUpdat" +
-      "e\032\020.BookingResponse\"\0002\214\002\n\014HotelService\022(" +
-      "\n\tAskHotels\022\013.AskRequest\032\014.AskResponse\"\000" +
-      "\022-\n\010GetHotel\022\017.HotelIdRequest\032\016.HotelRes" +
-      "ponse\"\000\022.\n\007Reserve\022\017.ReserveRequest\032\020.Re" +
-      "serveResponse\"\000\022.\n\007Release\022\017.ReleaseRequ" +
-      "est\032\020.ReleaseResponse\"\000\022C\n\016ConfirmPaymen" +
-      "t\022\026.ConfirmPaymentRequest\032\027.ConfirmPayme" +
-      "ntResponse\"\000B\031\n\025rs.raf.pds.v5.z2.gRPCP\001b" +
-      "\006proto3"
+      "user_id\030\002 \001(\t\"3\n\017PaymentResponse\022\017\n\007succ" +
+      "ess\030\001 \001(\010\022\017\n\007message\030\002 \001(\t\"\036\n\013UserReques" +
+      "t\022\017\n\007user_id\030\001 \001(\t\"\200\001\n\013BookingInfo\022\022\n\nbo" +
+      "oking_id\030\001 \001(\t\022\020\n\010hotel_id\030\002 \001(\t\022\022\n\nstar" +
+      "t_date\030\003 \001(\t\022\025\n\rduration_days\030\004 \001(\005\022\020\n\010e" +
+      "nd_date\030\005 \001(\t\022\016\n\006status\030\006 \001(\t\"7\n\017Occupan" +
+      "cyPeriod\022\022\n\nstart_date\030\001 \001(\t\022\020\n\010end_date" +
+      "\030\002 \001(\t\"\303\001\n\005Hotel\022\n\n\002id\030\001 \001(\t\022\014\n\004name\030\002 \001" +
+      "(\t\022\r\n\005stars\030\003 \001(\005\022\022\n\ndistance_m\030\004 \001(\005\022\014\n" +
+      "\004city\030\005 \001(\t\022\021\n\tavailable\030\006 \001(\010\022\"\n\010occupi" +
+      "ed\030\007 \003(\0132\020.OccupancyPeriod\022\022\n\nlast_price" +
+      "\030\010 \001(\001\022\021\n\tmin_price\030\t \001(\001\022\021\n\tmax_price\030\n" +
+      " \001(\001\"E\n\nAskRequest\022\014\n\004city\030\001 \001(\t\022\026\n\016max_" +
+      "distance_m\030\002 \001(\005\022\021\n\tmin_stars\030\003 \001(\005\"%\n\013A" +
+      "skResponse\022\026\n\006hotels\030\001 \003(\0132\006.Hotel\"$\n\016Ho" +
+      "telIdRequest\022\022\n\nid_or_name\030\001 \001(\t\"5\n\rHote" +
+      "lResponse\022\r\n\005found\030\001 \001(\010\022\025\n\005hotel\030\002 \001(\0132" +
+      "\006.Hotel\"M\n\016ReserveRequest\022\020\n\010hotel_id\030\001 " +
+      "\001(\t\022\022\n\nstart_date\030\002 \001(\t\022\025\n\rduration_days" +
+      "\030\003 \001(\005\"3\n\017ReserveResponse\022\017\n\007success\030\001 \001" +
+      "(\010\022\017\n\007message\030\002 \001(\t\"M\n\016ReleaseRequest\022\020\n" +
+      "\010hotel_id\030\001 \001(\t\022\022\n\nstart_date\030\002 \001(\t\022\025\n\rd" +
+      "uration_days\030\003 \001(\005\"3\n\017ReleaseResponse\022\017\n" +
+      "\007success\030\001 \001(\010\022\017\n\007message\030\002 \001(\t\"=\n\025Confi" +
+      "rmPaymentRequest\022\020\n\010hotel_id\030\001 \001(\t\022\022\n\nbo" +
+      "oking_id\030\002 \001(\t\":\n\026ConfirmPaymentResponse" +
+      "\022\017\n\007success\030\001 \001(\010\022\017\n\007message\030\002 \001(\t2\375\001\n\016B" +
+      "ookingService\0222\n\013MakeBooking\022\017.BookingRe" +
+      "quest\032\020.BookingResponse\"\000\0222\n\rCancelBooki" +
+      "ng\022\016.CancelRequest\032\017.CancelResponse\"\000\022-\n" +
+      "\013GetBookings\022\014.UserRequest\032\014.BookingInfo" +
+      "\"\0000\001\022*\n\003Pay\022\017.PaymentRequest\032\020.PaymentRe" +
+      "sponse\"\000\022(\n\tAskHotels\022\013.AskRequest\032\014.Ask" +
+      "Response\"\0002\214\002\n\014HotelService\022(\n\tAskHotels" +
+      "\022\013.AskRequest\032\014.AskResponse\"\000\022-\n\010GetHote" +
+      "l\022\017.HotelIdRequest\032\016.HotelResponse\"\000\022.\n\007" +
+      "Reserve\022\017.ReserveRequest\032\020.ReserveRespon" +
+      "se\"\000\022.\n\007Release\022\017.ReleaseRequest\032\020.Relea" +
+      "seResponse\"\000\022C\n\016ConfirmPayment\022\026.Confirm" +
+      "PaymentRequest\032\027.ConfirmPaymentResponse\"" +
+      "\000B\031\n\025rs.raf.pds.v5.z2.gRPCP\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -244,111 +212,87 @@ public final class BookingServiceOuterClass {
     internal_static_PaymentResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_PaymentResponse_descriptor,
-        new java.lang.String[] { "Success", "Message", "Balance", });
-    internal_static_DepositRequest_descriptor =
-      getDescriptor().getMessageTypes().get(6);
-    internal_static_DepositRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_DepositRequest_descriptor,
-        new java.lang.String[] { "UserId", "Amount", });
-    internal_static_DepositResponse_descriptor =
-      getDescriptor().getMessageTypes().get(7);
-    internal_static_DepositResponse_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_DepositResponse_descriptor,
-        new java.lang.String[] { "Success", "Message", "Balance", });
+        new java.lang.String[] { "Success", "Message", });
     internal_static_UserRequest_descriptor =
-      getDescriptor().getMessageTypes().get(8);
+      getDescriptor().getMessageTypes().get(6);
     internal_static_UserRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_UserRequest_descriptor,
         new java.lang.String[] { "UserId", });
     internal_static_BookingInfo_descriptor =
-      getDescriptor().getMessageTypes().get(9);
+      getDescriptor().getMessageTypes().get(7);
     internal_static_BookingInfo_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_BookingInfo_descriptor,
         new java.lang.String[] { "BookingId", "HotelId", "StartDate", "DurationDays", "EndDate", "Status", });
     internal_static_OccupancyPeriod_descriptor =
-      getDescriptor().getMessageTypes().get(10);
+      getDescriptor().getMessageTypes().get(8);
     internal_static_OccupancyPeriod_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_OccupancyPeriod_descriptor,
         new java.lang.String[] { "StartDate", "EndDate", });
     internal_static_Hotel_descriptor =
-      getDescriptor().getMessageTypes().get(11);
+      getDescriptor().getMessageTypes().get(9);
     internal_static_Hotel_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Hotel_descriptor,
         new java.lang.String[] { "Id", "Name", "Stars", "DistanceM", "City", "Available", "Occupied", "LastPrice", "MinPrice", "MaxPrice", });
     internal_static_AskRequest_descriptor =
-      getDescriptor().getMessageTypes().get(12);
+      getDescriptor().getMessageTypes().get(10);
     internal_static_AskRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_AskRequest_descriptor,
-        new java.lang.String[] { "City", "MaxDistanceM", "MinStars", "UserId", });
+        new java.lang.String[] { "City", "MaxDistanceM", "MinStars", });
     internal_static_AskResponse_descriptor =
-      getDescriptor().getMessageTypes().get(13);
+      getDescriptor().getMessageTypes().get(11);
     internal_static_AskResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_AskResponse_descriptor,
         new java.lang.String[] { "Hotels", });
-    internal_static_Notification_descriptor =
-      getDescriptor().getMessageTypes().get(14);
-    internal_static_Notification_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_Notification_descriptor,
-        new java.lang.String[] { "Text", "HotelId", });
-    internal_static_HotelUpdate_descriptor =
-      getDescriptor().getMessageTypes().get(15);
-    internal_static_HotelUpdate_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_HotelUpdate_descriptor,
-        new java.lang.String[] { "HotelId", "LastPrice", });
     internal_static_HotelIdRequest_descriptor =
-      getDescriptor().getMessageTypes().get(16);
+      getDescriptor().getMessageTypes().get(12);
     internal_static_HotelIdRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_HotelIdRequest_descriptor,
         new java.lang.String[] { "IdOrName", });
     internal_static_HotelResponse_descriptor =
-      getDescriptor().getMessageTypes().get(17);
+      getDescriptor().getMessageTypes().get(13);
     internal_static_HotelResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_HotelResponse_descriptor,
         new java.lang.String[] { "Found", "Hotel", });
     internal_static_ReserveRequest_descriptor =
-      getDescriptor().getMessageTypes().get(18);
+      getDescriptor().getMessageTypes().get(14);
     internal_static_ReserveRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ReserveRequest_descriptor,
-        new java.lang.String[] { "HotelId", "StartDate", "DurationDays", "UserId", });
+        new java.lang.String[] { "HotelId", "StartDate", "DurationDays", });
     internal_static_ReserveResponse_descriptor =
-      getDescriptor().getMessageTypes().get(19);
+      getDescriptor().getMessageTypes().get(15);
     internal_static_ReserveResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ReserveResponse_descriptor,
         new java.lang.String[] { "Success", "Message", });
     internal_static_ReleaseRequest_descriptor =
-      getDescriptor().getMessageTypes().get(20);
+      getDescriptor().getMessageTypes().get(16);
     internal_static_ReleaseRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ReleaseRequest_descriptor,
         new java.lang.String[] { "HotelId", "StartDate", "DurationDays", });
     internal_static_ReleaseResponse_descriptor =
-      getDescriptor().getMessageTypes().get(21);
+      getDescriptor().getMessageTypes().get(17);
     internal_static_ReleaseResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ReleaseResponse_descriptor,
         new java.lang.String[] { "Success", "Message", });
     internal_static_ConfirmPaymentRequest_descriptor =
-      getDescriptor().getMessageTypes().get(22);
+      getDescriptor().getMessageTypes().get(18);
     internal_static_ConfirmPaymentRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ConfirmPaymentRequest_descriptor,
-        new java.lang.String[] { "HotelId", "BookingId", "Amount", });
+        new java.lang.String[] { "HotelId", "BookingId", });
     internal_static_ConfirmPaymentResponse_descriptor =
-      getDescriptor().getMessageTypes().get(23);
+      getDescriptor().getMessageTypes().get(19);
     internal_static_ConfirmPaymentResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ConfirmPaymentResponse_descriptor,

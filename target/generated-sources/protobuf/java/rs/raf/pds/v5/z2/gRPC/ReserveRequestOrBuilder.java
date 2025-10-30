@@ -36,24 +36,4 @@ public interface ReserveRequestOrBuilder extends
    * @return The durationDays.
    */
   int getDurationDays();
-
-  /**
-   * <pre>
-   * optional: who requested reservation
-   * </pre>
-   *
-   * <code>string user_id = 4;</code>
-   * @return The userId.
-   */
-  java.lang.String getUserId();
-  /**
-   * <pre>
-   * optional: who requested reservation
-   * </pre>
-   *
-   * <code>string user_id = 4;</code>
-   * @return The bytes for userId.
-   */
-  com.google.protobuf.ByteString
-      getUserIdBytes();
 }

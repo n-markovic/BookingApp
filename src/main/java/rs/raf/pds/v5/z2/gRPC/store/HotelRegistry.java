@@ -9,23 +9,18 @@ import java.util.stream.Collectors;
 
 public class HotelRegistry {
     private final List<Hotel> hotels = new ArrayList<>();
-    private final String defaultCity = "Beograd";
-    private final String city2 = "Zlatibor";
-    private final String city3 = "Kragujevac";
+    private final String defaultCity = "CityA";
+    private final String secondCity = "CityB";
 
     public HotelRegistry() {
-        // Beograd
-        hotels.add(new Hotel("BE-MOS", "Moskva", 5, 500, defaultCity, true));
-        hotels.add(new Hotel("BE-BAL", "Balkan", 4, 1200, defaultCity, true));
-        hotels.add(new Hotel("BE-SAV", "Savamala", 3, 800, defaultCity, true));
-        // Zlatibor
-        hotels.add(new Hotel("ZT-LUX", "Lux", 5, 3000, city2, true));
-        hotels.add(new Hotel("ZT-KON", "Konaciste", 4, 3200, city2, true));
-        hotels.add(new Hotel("ZT-PAL", "Palisad", 3, 2800, city2, true));
-        // Kragujevac
-        hotels.add(new Hotel("KR-ZEN", "Zeneva", 5, 6000, city3, true));
-        hotels.add(new Hotel("KR-GAR", "Garni", 4, 5500, city3, true));
-        hotels.add(new Hotel("KR-RUB", "Rubikon", 3, 5200, city3, true));
+        // City A
+        hotels.add(new Hotel("A1", "A-Hotel-1", 3, 800, defaultCity, true));
+        hotels.add(new Hotel("A2", "A-Hotel-2", 4, 1200, defaultCity, true));
+        hotels.add(new Hotel("A3", "A-Hotel-3", 5, 300, defaultCity, true));
+        // City B (second city) with three hotels
+        hotels.add(new Hotel("B1", "B-Hotel-1", 3, 600, secondCity, true));
+        hotels.add(new Hotel("B2", "B-Hotel-2", 4, 1500, secondCity, true));
+        hotels.add(new Hotel("B3", "B-Hotel-3", 5, 400, secondCity, true));
     }
 
     public List<Hotel> listAll() { return Collections.unmodifiableList(hotels); }
@@ -36,6 +31,7 @@ public class HotelRegistry {
                 .filter(h -> h.getCity().equalsIgnoreCase(targetCity))
                 .filter(h -> h.getDistanceMeters() <= maxDistance)
                 .filter(h -> h.getStars() >= minStars)
+                .filter(Hotel::isAvailable)
                 .collect(Collectors.toList());
     }
 }
