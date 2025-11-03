@@ -30,4 +30,14 @@ public interface ConfirmPaymentRequestOrBuilder extends
    */
   com.google.protobuf.ByteString
       getBookingIdBytes();
+
+  /**
+   * <pre>
+   * amount transferred to hotel
+   * </pre>
+   *
+   * <code>double amount = 3;</code>
+   * @return The amount.
+   */
+  double getAmount();
 }

@@ -37,7 +37,7 @@ public class BookingClient implements AutoCloseable {
         Iterator<BookingInfo> it = blocking.getBookings(UserRequest.newBuilder().setUserId(userId).build());
         while (it.hasNext()) {
             BookingInfo b = it.next();
-            System.out.println("- " + b.getBookingId() + " room=" + b.getRoomId() + " date=" + b.getDate() + " status=" + b.getStatus());
+            System.out.println("- " + b.getBookingId() + " soba=" + b.getRoomId() + " datum=" + b.getDate() + " status=" + b.getStatus());
         }
     }
 
@@ -74,11 +74,11 @@ public class BookingClient implements AutoCloseable {
         }
 
         try (BookingClient client = new BookingClient(host, port); Scanner in = new Scanner(System.in)) {
-            System.out.println("BookingClient connected to " + host + ":" + port);
+            System.out.println("BookingClient povezan sa " + host + ":" + port);
             if (sessionUser != null) {
-                System.out.println("Session user set to '" + sessionUser + "'. You can omit the user in 'book' and 'list' commands.");
+                System.out.println("Korisnik sesije postavljen na '" + sessionUser + "'. Mozete izostaviti korisnika u komandama 'book' i 'list'.");
             }
-            System.out.println("Commands: book <room> <yyyy-MM-dd> | cancel <bookingId> | list | quit");
+            System.out.println("Komande: book <Hotel> <datum yyyy-MM-dd> | cancel <IDrezervacije> | list | quit");
             while (true) {
                 System.out.print("> ");
                 if (!in.hasNextLine()) break;
@@ -92,32 +92,32 @@ public class BookingClient implements AutoCloseable {
                         case "make": { // keep 'make' as alias
                             if (sessionUser != null) {
                                 // Expected: book <room> <date>
-                                if (parts.length < 3) { System.out.println("Usage: book <room> <yyyy-MM-dd>"); break; }
+                                if (parts.length < 3) { System.out.println("Upotreba: book <soba> <yyyy-MM-dd>"); break; }
                                 String msg = client.make(sessionUser, parts[1], parts[2]);
                                 System.out.println(msg);
                             } else {
-                                if (parts.length < 4) { System.out.println("Usage: book <user> <room> <yyyy-MM-dd>"); break; }
+                                if (parts.length < 4) { System.out.println("Upotreba: book <user> <soba> <yyyy-MM-dd>"); break; }
                                 String msg = client.make(parts[1], parts[2], parts[3]);
                                 System.out.println(msg);
                             }
                             break; }
                         case "cancel":
-                            if (parts.length < 2) { System.out.println("Usage: cancel <bookingId>"); break; }
+                            if (parts.length < 2) { System.out.println("Upotreba: cancel <bookingId>"); break; }
                             System.out.println(client.cancel(parts[1]));
                             break;
                         case "list":
                             if (sessionUser != null) {
                                 client.list(sessionUser);
                             } else {
-                                if (parts.length < 2) { System.out.println("Usage: list <user>"); break; }
+                                if (parts.length < 2) { System.out.println("Upotreba: list <user>"); break; }
                                 client.list(parts[1]);
                             }
                             break;
                         default:
-                            System.out.println("Unknown command");
+                            System.out.println("Nepoznata komanda");
                     }
                 } catch (Exception e) {
-                    System.out.println("Error: " + e.getMessage());
+                    System.out.println("Greska: " + e.getMessage());
                 }
             }
         }

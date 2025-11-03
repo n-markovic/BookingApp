@@ -17,23 +17,23 @@ public class InMemoryBookingStore {
     public static String roomDateKey(String roomId, String date) { return roomId + "|" + date; }
 
     public Result create(String userId, String roomId, String date) {
-        if (blank(userId) || blank(roomId) || blank(date)) return Result.failure("Missing required field(s)");
-        if (!date.matches("\\d{4}-\\d{2}-\\d{2}")) return Result.failure("Date must be yyyy-MM-dd");
+        if (blank(userId) || blank(roomId) || blank(date)) return Result.failure("Nedostaje obavezno polje");
+        if (!date.matches("\\d{4}-\\d{2}-\\d{2}")) return Result.failure("Datum mora biti u formatu yyyy-MM-dd");
         String key = roomDateKey(roomId, date);
         String newId = UUID.randomUUID().toString();
         String existing = roomDateIndex.putIfAbsent(key, newId);
-        if (existing != null) return Result.failure("Room already booked for date");
+        if (existing != null) return Result.failure("Soba je vec rezervisana za dati datum");
         BookingRecord rec = new BookingRecord(newId, userId, roomId, date, STATUS_ACTIVE);
         byId.put(newId, rec);
-        return Result.success("Booking created", rec);
+        return Result.success("Rezervacija kreirana", rec);
     }
 
     public Result cancel(String bookingId) {
         if (blank(bookingId)) return Result.failure("booking_id required");
         BookingRecord rec = byId.get(bookingId);
-        if (rec == null) return Result.failure("Booking not found");
+        if (rec == null) return Result.failure("Rezervacija nije pronadjena");
         rec.cancel();
-        return Result.success("Booking canceled", rec);
+        return Result.success("Rezervacija otkazana", rec);
     }
 
     public List<BookingRecord> listByUser(String userId) {

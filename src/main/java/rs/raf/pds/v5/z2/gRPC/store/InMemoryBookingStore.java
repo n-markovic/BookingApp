@@ -23,46 +23,47 @@ public class InMemoryBookingStore {
 
     private static final DateTimeFormatter DATE_FMT = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
-    public Result create(String userId, String hotelId, String startDateStr, int durationDays) {
-        if (blank(userId) || blank(hotelId) || blank(startDateStr)) return Result.failure("Missing required field(s)");
-        if (durationDays < 1) return Result.failure("duration_days must be >= 1");
+    // pricePerNight passed by caller (snapshot at booking time)
+    public Result create(String userId, String hotelId, String startDateStr, int durationDays, double pricePerNight) {
+        if (blank(userId) || blank(hotelId) || blank(startDateStr)) return Result.failure("Nedostaje obavezno polje");
+        if (durationDays < 1) return Result.failure("Trajanje mora biti >= 1");
         LocalDate start;
-        try { start = LocalDate.parse(startDateStr, DATE_FMT); } catch (DateTimeParseException e) { return Result.failure("start_date must be yyyy-MM-dd"); }
+        try { start = LocalDate.parse(startDateStr, DATE_FMT); } catch (DateTimeParseException e) { return Result.failure("Datum mora biti u formatu yyyy-MM-dd"); }
         LocalDate end = start.plusDays(durationDays); // exclusive
 
         // Overlap detection: [start,end) overlaps existing ACTIVE booking if ranges intersect
         Set<String> ids = byHotel.getOrDefault(hotelId, Collections.emptySet());
         for (String id : ids) {
             BookingRecord existing = byId.get(id);
-            if (existing == null || !STATUS_ACTIVE.equals(existing.getStatus())) continue;
+            if (existing == null || !(STATUS_ACTIVE.equals(existing.getStatus()) || STATUS_PAID.equals(existing.getStatus()))) continue;
             LocalDate eStart = LocalDate.parse(existing.getStartDate(), DATE_FMT);
             LocalDate eEnd = LocalDate.parse(existing.getEndDate(), DATE_FMT);
             boolean overlap = !(end.compareTo(eStart) <= 0 || start.compareTo(eEnd) >= 0);
-            if (overlap) return Result.failure("Hotel already booked for overlapping period");
+            if (overlap) return Result.failure("Hotel je vec rezervisan za dati period");
         }
 
         String newId = String.valueOf(sequence.incrementAndGet());
-        BookingRecord rec = new BookingRecord(newId, userId, hotelId, startDateStr, durationDays, STATUS_ACTIVE, end.format(DATE_FMT));
+        BookingRecord rec = new BookingRecord(newId, userId, hotelId, startDateStr, durationDays, STATUS_ACTIVE, end.format(DATE_FMT), pricePerNight);
         byId.put(newId, rec);
         byHotel.computeIfAbsent(hotelId, k -> ConcurrentHashMap.newKeySet()).add(newId);
-        return Result.success("Booking created", rec);
+    return Result.success("Rezervacija kreirana", rec);
     }
 
     public Result cancel(String bookingId) {
         if (blank(bookingId)) return Result.failure("booking_id required");
         BookingRecord rec = byId.get(bookingId);
-        if (rec == null) return Result.failure("Booking not found");
+        if (rec == null) return Result.failure("Rezervacija nije pronadjena");
         rec.cancel();
-        return Result.success("Booking canceled", rec);
+        return Result.success("Rezervacija otkazana", rec);
     }
 
     public Result cancelAuthorized(String bookingId, String userId) {
-        if (blank(bookingId) || blank(userId)) return Result.failure("booking_id and user_id required");
+        if (blank(bookingId) || blank(userId)) return Result.failure("booking_id i user_id neophodni");
         BookingRecord rec = byId.get(bookingId);
-        if (rec == null) return Result.failure("Booking not found");
-        if (!rec.getUserId().equals(userId)) return Result.failure("Not owner of booking");
+        if (rec == null) return Result.failure("Rezervacija nije pronadjena");
+    if (!rec.getUserId().equals(userId)) return Result.failure("Niste vlasnik rezervacije");
         rec.cancel();
-        return Result.success("Booking canceled", rec);
+        return Result.success("Rezervacija otkazana", rec);
     }
 
     public List<BookingRecord> listByUser(String userId) {
@@ -78,7 +79,7 @@ public class InMemoryBookingStore {
         return ids.stream()
                 .map(byId::get)
                 .filter(Objects::nonNull)
-                .filter(b -> STATUS_ACTIVE.equals(b.getStatus()))
+                .filter(b -> STATUS_ACTIVE.equals(b.getStatus()) || STATUS_PAID.equals(b.getStatus()))
                 .sorted(Comparator.comparing(BookingRecord::getStartDate))
                 .collect(Collectors.toList());
     }
@@ -87,11 +88,11 @@ public class InMemoryBookingStore {
 
     public Result markPaid(String bookingId, String userId) {
         BookingRecord rec = byId.get(bookingId);
-        if (rec == null) return Result.failure("Booking not found");
-        if (!rec.getUserId().equals(userId)) return Result.failure("Not owner of booking");
-        if (!STATUS_ACTIVE.equals(rec.getStatus())) return Result.failure("Cannot pay: status=" + rec.getStatus());
+        if (rec == null) return Result.failure("Rezervacija nije pronadjena");
+    if (!rec.getUserId().equals(userId)) return Result.failure("Niste vlasnik rezervacije");
+    if (!STATUS_ACTIVE.equals(rec.getStatus())) return Result.failure("Ne moze se platiti: status=" + rec.getStatus());
         rec.paid();
-        return Result.success("Payment recorded", rec);
+        return Result.success("Uplata zabeležena", rec);
     }
 
     private boolean blank(String s) { return s == null || s.trim().isEmpty(); }

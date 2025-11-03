@@ -118,6 +118,21 @@ private static final long serialVersionUID = 0L;
     }
   }
 
+  public static final int AMOUNT_FIELD_NUMBER = 3;
+  private double amount_ = 0D;
+  /**
+   * <pre>
+   * amount transferred to hotel
+   * </pre>
+   *
+   * <code>double amount = 3;</code>
+   * @return The amount.
+   */
+  @java.lang.Override
+  public double getAmount() {
+    return amount_;
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -138,6 +153,9 @@ private static final long serialVersionUID = 0L;
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(bookingId_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 2, bookingId_);
     }
+    if (java.lang.Double.doubleToRawLongBits(amount_) != 0) {
+      output.writeDouble(3, amount_);
+    }
     getUnknownFields().writeTo(output);
   }
 
@@ -152,6 +170,10 @@ private static final long serialVersionUID = 0L;
     }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(bookingId_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, bookingId_);
+    }
+    if (java.lang.Double.doubleToRawLongBits(amount_) != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeDoubleSize(3, amount_);
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -172,6 +194,9 @@ private static final long serialVersionUID = 0L;
         .equals(other.getHotelId())) return false;
     if (!getBookingId()
         .equals(other.getBookingId())) return false;
+    if (java.lang.Double.doubleToLongBits(getAmount())
+        != java.lang.Double.doubleToLongBits(
+            other.getAmount())) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -187,6 +212,9 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getHotelId().hashCode();
     hash = (37 * hash) + BOOKING_ID_FIELD_NUMBER;
     hash = (53 * hash) + getBookingId().hashCode();
+    hash = (37 * hash) + AMOUNT_FIELD_NUMBER;
+    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+        java.lang.Double.doubleToLongBits(getAmount()));
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -320,6 +348,7 @@ private static final long serialVersionUID = 0L;
       bitField0_ = 0;
       hotelId_ = "";
       bookingId_ = "";
+      amount_ = 0D;
       return this;
     }
 
@@ -359,6 +388,9 @@ private static final long serialVersionUID = 0L;
       if (((from_bitField0_ & 0x00000002) != 0)) {
         result.bookingId_ = bookingId_;
       }
+      if (((from_bitField0_ & 0x00000004) != 0)) {
+        result.amount_ = amount_;
+      }
     }
 
     @java.lang.Override
@@ -382,6 +414,9 @@ private static final long serialVersionUID = 0L;
         bookingId_ = other.bookingId_;
         bitField0_ |= 0x00000002;
         onChanged();
+      }
+      if (other.getAmount() != 0D) {
+        setAmount(other.getAmount());
       }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
@@ -419,6 +454,11 @@ private static final long serialVersionUID = 0L;
               bitField0_ |= 0x00000002;
               break;
             } // case 18
+            case 25: {
+              amount_ = input.readDouble();
+              bitField0_ |= 0x00000004;
+              break;
+            } // case 25
             default: {
               if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                 done = true; // was an endgroup tag
@@ -576,6 +616,50 @@ private static final long serialVersionUID = 0L;
       checkByteStringIsUtf8(value);
       bookingId_ = value;
       bitField0_ |= 0x00000002;
+      onChanged();
+      return this;
+    }
+
+    private double amount_ ;
+    /**
+     * <pre>
+     * amount transferred to hotel
+     * </pre>
+     *
+     * <code>double amount = 3;</code>
+     * @return The amount.
+     */
+    @java.lang.Override
+    public double getAmount() {
+      return amount_;
+    }
+    /**
+     * <pre>
+     * amount transferred to hotel
+     * </pre>
+     *
+     * <code>double amount = 3;</code>
+     * @param value The amount to set.
+     * @return This builder for chaining.
+     */
+    public Builder setAmount(double value) {
+
+      amount_ = value;
+      bitField0_ |= 0x00000004;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     * amount transferred to hotel
+     * </pre>
+     *
+     * <code>double amount = 3;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearAmount() {
+      bitField0_ = (bitField0_ & ~0x00000004);
+      amount_ = 0D;
       onChanged();
       return this;
     }

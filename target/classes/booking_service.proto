@@ -9,8 +9,14 @@ service BookingService {
     rpc GetBookings(UserRequest) returns (stream BookingInfo) {}
     // Client payment to confirm booking before deadline
     rpc Pay(PaymentRequest) returns (PaymentResponse) {}
+    // Deposit money into user's server-side bank account
+    rpc Deposit(DepositRequest) returns (DepositResponse) {}
     // Proxy query: Client asks BookingService, which forwards to HotelService
     rpc AskHotels(AskRequest) returns (AskResponse) {}
+    // Server-side notifications: client subscribes and receives pushed notifications
+    rpc SubscribeNotifications(UserRequest) returns (stream Notification) {}
+    // Hotel server notifies BookingServer about hotel updates (price changes)
+    rpc NotifyHotelUpdate(HotelUpdate) returns (BookingResponse) {}
 }
 
 service HotelService {
@@ -54,6 +60,18 @@ message PaymentRequest {
 message PaymentResponse {
     bool success = 1;
     string message = 2;
+    double balance = 3;
+}
+
+message DepositRequest {
+    string user_id = 1;
+    double amount = 2;
+}
+
+message DepositResponse {
+    bool success = 1;
+    string message = 2;
+    double balance = 3;
 }
 
 message UserRequest {
@@ -92,10 +110,23 @@ message AskRequest {
     string city = 1;        // leave empty for default city
     int32 max_distance_m = 2;
     int32 min_stars = 3;    // minimum stars (3..5)
+    string user_id = 4;     // optional: who asked
 }
 
 message AskResponse {
     repeated Hotel hotels = 1;
+}
+
+// Notifications pushed from BookingServer to clients
+message Notification {
+    string text = 1;
+    string hotel_id = 2;
+}
+
+// Hotel -> BookingServer update message
+message HotelUpdate {
+    string hotel_id = 1;
+    double last_price = 2;
 }
 
 message HotelIdRequest {
@@ -112,6 +143,7 @@ message ReserveRequest {
     string hotel_id = 1;
     string start_date = 2;
     int32 duration_days = 3;
+    string user_id = 4; // optional: who requested reservation
 }
 message ReserveResponse {
     bool success = 1;
@@ -129,6 +161,7 @@ message ReleaseResponse {
 message ConfirmPaymentRequest {
     string hotel_id = 1;
     string booking_id = 2;
+    double amount = 3; // amount transferred to hotel
 }
 message ConfirmPaymentResponse {
     bool success = 1;

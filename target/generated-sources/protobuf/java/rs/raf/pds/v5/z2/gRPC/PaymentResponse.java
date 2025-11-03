@@ -89,6 +89,17 @@ private static final long serialVersionUID = 0L;
     }
   }
 
+  public static final int BALANCE_FIELD_NUMBER = 3;
+  private double balance_ = 0D;
+  /**
+   * <code>double balance = 3;</code>
+   * @return The balance.
+   */
+  @java.lang.Override
+  public double getBalance() {
+    return balance_;
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -109,6 +120,9 @@ private static final long serialVersionUID = 0L;
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(message_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 2, message_);
     }
+    if (java.lang.Double.doubleToRawLongBits(balance_) != 0) {
+      output.writeDouble(3, balance_);
+    }
     getUnknownFields().writeTo(output);
   }
 
@@ -124,6 +138,10 @@ private static final long serialVersionUID = 0L;
     }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(message_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, message_);
+    }
+    if (java.lang.Double.doubleToRawLongBits(balance_) != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeDoubleSize(3, balance_);
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -144,6 +162,9 @@ private static final long serialVersionUID = 0L;
         != other.getSuccess()) return false;
     if (!getMessage()
         .equals(other.getMessage())) return false;
+    if (java.lang.Double.doubleToLongBits(getBalance())
+        != java.lang.Double.doubleToLongBits(
+            other.getBalance())) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -160,6 +181,9 @@ private static final long serialVersionUID = 0L;
         getSuccess());
     hash = (37 * hash) + MESSAGE_FIELD_NUMBER;
     hash = (53 * hash) + getMessage().hashCode();
+    hash = (37 * hash) + BALANCE_FIELD_NUMBER;
+    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+        java.lang.Double.doubleToLongBits(getBalance()));
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -293,6 +317,7 @@ private static final long serialVersionUID = 0L;
       bitField0_ = 0;
       success_ = false;
       message_ = "";
+      balance_ = 0D;
       return this;
     }
 
@@ -332,6 +357,9 @@ private static final long serialVersionUID = 0L;
       if (((from_bitField0_ & 0x00000002) != 0)) {
         result.message_ = message_;
       }
+      if (((from_bitField0_ & 0x00000004) != 0)) {
+        result.balance_ = balance_;
+      }
     }
 
     @java.lang.Override
@@ -353,6 +381,9 @@ private static final long serialVersionUID = 0L;
         message_ = other.message_;
         bitField0_ |= 0x00000002;
         onChanged();
+      }
+      if (other.getBalance() != 0D) {
+        setBalance(other.getBalance());
       }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
@@ -390,6 +421,11 @@ private static final long serialVersionUID = 0L;
               bitField0_ |= 0x00000002;
               break;
             } // case 18
+            case 25: {
+              balance_ = input.readDouble();
+              bitField0_ |= 0x00000004;
+              break;
+            } // case 25
             default: {
               if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                 done = true; // was an endgroup tag
@@ -507,6 +543,38 @@ private static final long serialVersionUID = 0L;
       checkByteStringIsUtf8(value);
       message_ = value;
       bitField0_ |= 0x00000002;
+      onChanged();
+      return this;
+    }
+
+    private double balance_ ;
+    /**
+     * <code>double balance = 3;</code>
+     * @return The balance.
+     */
+    @java.lang.Override
+    public double getBalance() {
+      return balance_;
+    }
+    /**
+     * <code>double balance = 3;</code>
+     * @param value The balance to set.
+     * @return This builder for chaining.
+     */
+    public Builder setBalance(double value) {
+
+      balance_ = value;
+      bitField0_ |= 0x00000004;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>double balance = 3;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearBalance() {
+      bitField0_ = (bitField0_ & ~0x00000004);
+      balance_ = 0D;
       onChanged();
       return this;
     }

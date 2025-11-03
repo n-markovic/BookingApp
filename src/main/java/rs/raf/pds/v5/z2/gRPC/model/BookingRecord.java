@@ -11,9 +11,11 @@ public class BookingRecord {
     private final int durationDays;      // >=1
     private final String endDate;        // computed exclusive end date (start + duration)
     private volatile String status;      // ACTIVE, CANCELED, PAID
+    private final double pricePerNight;
+    private final double totalPrice;
     private final Instant createdAt = Instant.now();
 
-    public BookingRecord(String bookingId, String userId, String hotelId, String startDate, int durationDays, String status, String endDate) {
+    public BookingRecord(String bookingId, String userId, String hotelId, String startDate, int durationDays, String status, String endDate, double pricePerNight) {
         this.bookingId = bookingId;
         this.userId = userId;
         this.hotelId = hotelId;
@@ -21,6 +23,8 @@ public class BookingRecord {
         this.durationDays = durationDays;
         this.status = status;
         this.endDate = endDate;
+        this.pricePerNight = pricePerNight;
+        this.totalPrice = Math.round(pricePerNight * durationDays * 100.0) / 100.0;
     }
 
     public String getBookingId() { return bookingId; }
@@ -31,6 +35,9 @@ public class BookingRecord {
     public String getEndDate() { return endDate; }
     public String getStatus() { return status; }
     public Instant getCreatedAt() { return createdAt; }
+
+    public double getPricePerNight() { return pricePerNight; }
+    public double getTotalPrice() { return totalPrice; }
 
     public synchronized void cancel() { if (!"CANCELED".equals(status)) status = "CANCELED"; }
     public synchronized void paid() { status = "PAID"; }

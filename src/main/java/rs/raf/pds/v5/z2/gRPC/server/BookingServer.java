@@ -9,6 +9,8 @@ public class BookingServer {
     private final String hotelHost;
     private final int hotelPort;
     private Server server;
+    // Bank status for BookingServer (simple shared field)
+    private double bank = 0.0;
 
     public BookingServer(int port, String hotelHost, int hotelPort) {
         this.port = port;
@@ -21,11 +23,11 @@ public class BookingServer {
         .addService(new BookingServiceImpl(hotelHost, hotelPort))
                 .build()
                 .start();
-        System.out.println("gRPC BookingServer started on port " + port);
+    System.out.println("gRPC BookingServer pokrenut na portu " + port + " | stanje banke=" + bank);
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {
-            System.out.println("JVM shutdown detected, shutting down gRPC server...");
+            System.out.println("Detektirano gasenje JVM-a, zatvaram gRPC server...");
             BookingServer.this.stop();
-            System.out.println("Server shut down.");
+            System.out.println("Server zaustavljen.");
         }));
     }
 
@@ -45,4 +47,7 @@ public class BookingServer {
         s.start();
         s.blockUntilShutdown();
     }
+
+    public double getBank() { return bank; }
+    public void setBank(double bank) { this.bank = bank; }
 }

@@ -42,4 +42,24 @@ public interface AskRequestOrBuilder extends
    * @return The minStars.
    */
   int getMinStars();
+
+  /**
+   * <pre>
+   * optional: who asked
+   * </pre>
+   *
+   * <code>string user_id = 4;</code>
+   * @return The userId.
+   */
+  java.lang.String getUserId();
+  /**
+   * <pre>
+   * optional: who asked
+   * </pre>
+   *
+   * <code>string user_id = 4;</code>
+   * @return The bytes for userId.
+   */
+  com.google.protobuf.ByteString
+      getUserIdBytes();
 }

@@ -27,9 +27,9 @@ public class ReservationManagerServer {
                 .addService(new BookingServiceImpl(store, hotelHost, hotelPort))
                 .build()
                 .start();
-        System.out.println("ReservationManagerServer started on port " + port + " (hotel service " + hotelHost + ":" + hotelPort + ")");
+    System.out.println("ReservationManagerServer pokrenut na portu " + port + " (hotel servis " + hotelHost + ":" + hotelPort + ")");
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {
-            System.out.println("Shutdown detected, stopping ReservationManagerServer...");
+            System.out.println("Detektovano gasenje, zaustavljam ReservationManagerServer...");
             ReservationManagerServer.this.stop();
         }));
     }
